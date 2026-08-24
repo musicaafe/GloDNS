@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GloGeGo DNS</title>
+  <style>
+    :root{
+      --bg:#05070d;
+      --card:#0d111b;
+      --border:#1e2636;
+      --text:#f5f7fb;
+      --muted:#8b95a7;
+      --accent:#7c5cff;
+      --accent2:#00d4ff;
+      --success:#35e28a;
+    }
+
+    *{box-sizing:border-box}
+
+    body{
+      margin:0;
+      min-height:100vh;
+      font-family:Inter,Segoe UI,Arial,sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at 50% 20%, rgba(124,92,255,.16), transparent 34%),
+        radial-gradient(circle at 80% 80%, rgba(0,212,255,.08), transparent 28%),
+        var(--bg);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:24px;
+    }
+
+    .wrap{
+      width:min(560px,100%);
+    }
+
+    .card{
+      background:rgba(13,17,27,.88);
+      border:1px solid var(--border);
+      border-radius:24px;
+      padding:36px 30px 30px;
+      box-shadow:0 20px 70px rgba(0,0,0,.4);
+      backdrop-filter:blur(14px);
+    }
+
+    .logo{
+      width:58px;
+      height:58px;
+      margin:0 auto 18px;
+      border-radius:17px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:800;
+      font-size:22px;
+      background:linear-gradient(135deg,var(--accent),var(--accent2));
+      color:white;
+      box-shadow:0 10px 35px rgba(124,92,255,.3);
+    }
+
+    h1{
+      text-align:center;
+      margin:0;
+      font-size:31px;
+      letter-spacing:-.6px;
+    }
+
+    .sub{
+      text-align:center;
+      color:var(--muted);
+      margin:10px 0 28px;
+      font-size:15px;
+    }
+
+    .field{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      background:#090c14;
+      border:1px solid var(--border);
+      border-radius:15px;
+      padding:7px;
+    }
+
+    input{
+      flex:1;
+      min-width:0;
+      border:0;
+      outline:0;
+      background:transparent;
+      color:var(--text);
+      font-size:16px;
+      padding:14px 12px;
+    }
+
+    input::placeholder{color:#586274}
+
+    button{
+      border:0;
+      border-radius:11px;
+      padding:13px 18px;
+      color:#fff;
+      font-size:15px;
+      font-weight:700;
+      cursor:pointer;
+      background:linear-gradient(135deg,var(--accent),#5a7cff);
+      transition:.2s transform,.2s opacity;
+    }
+
+    button:hover{transform:translateY(-1px)}
+    button:active{transform:translateY(0)}
+    button:disabled{opacity:.6;cursor:default;transform:none}
+
+    .status{
+      margin-top:18px;
+      min-height:58px;
+      border:1px solid var(--border);
+      border-radius:15px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      color:var(--muted);
+      font-weight:600;
+      opacity:0;
+      transform:translateY(4px);
+      transition:.25s;
+      pointer-events:none;
+    }
+
+    .status.show{
+      opacity:1;
+      transform:translateY(0);
+    }
+
+    .status.connected{
+      color:var(--success);
+      border-color:rgba(53,226,138,.25);
+      background:rgba(53,226,138,.06);
+    }
+
+    .dot{
+      width:10px;
+      height:10px;
+      border-radius:50%;
+      background:currentColor;
+      box-shadow:0 0 12px currentColor;
+    }
+
+    .hint{
+      text-align:center;
+      color:#596377;
+      font-size:12px;
+      margin-top:20px;
+    }
+
+    @media (max-width:480px){
+      .card{padding:28px 18px 22px}
+      h1{font-size:26px}
+      .field{flex-direction:column}
+      button{width:100%}
+      input{width:100%}
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="card">
+      <div class="logo">GG</div>
+      <h1>GloGeGo DNS Ayarla</h1>
+      <p class="sub">DNS adresini aşağıdaki alana gir.</p>
+
+      <form id="dnsForm">
+        <div class="field">
+          <input
+            id="dnsInput"
+            type="text"
+            autocomplete="off"
+            spellcheck="false"
+            placeholder="DNS adresini gir..."
+            aria-label="DNS adresi"
+          />
+          <button id="saveBtn" type="submit">Kaydet</button>
+        </div>
+      </form>
+
+      <div id="status" class="status" aria-live="polite">
+        <span class="dot"></span>
+        <span id="statusText">Bağlı</span>
+      </div>
+
+      <div class="hint">Girdiğin değer bu tarayıcıda otomatik olarak kaydedilir.</div>
+    </section>
+  </main>
+
+  <script>
+    const VALID_DNS = "dns.globedrock.com";
+    const STORAGE_KEY = "glogego_dns_connected";
+
+    const form = document.getElementById("dnsForm");
+    const input = document.getElementById("dnsInput");
+    const button = document.getElementById("saveBtn");
+    const status = document.getElementById("status");
+
+    function showConnected() {
+      status.classList.add("show", "connected");
+    }
+
+    function checkSavedState() {
+      if (localStorage.getItem(STORAGE_KEY) === "1") {
+        showConnected();
+      }
+    }
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      const value = input.value.trim();
+
+      // Doğru DNS yazıldıysa kaydet ve bağlı durumundan çıkma.
+      if (value === VALID_DNS) {
+        localStorage.setItem(STORAGE_KEY, "1");
+        input.value = "";
+        button.textContent = "Kaydedildi";
+        button.disabled = true;
+        showConnected();
+      }
+    });
+
+    checkSavedState();
+  </script>
+</body>
+</html>
