@@ -197,7 +197,10 @@
   </main>
 
   <script>
-    const VALID_DNS = "dns.globedrock.com";
+    const VALID_DNS = [
+      "dns.globedrock.com",
+      "dns.GloBedrockVip.com"
+    ];
     const STORAGE_KEY = "glogego_dns_connected";
 
     const form = document.getElementById("dnsForm");
@@ -205,28 +208,31 @@
     const button = document.getElementById("saveBtn");
     const status = document.getElementById("status");
 
-    function showConnected() {
+    function showConnected(dns) {
       status.classList.add("show", "connected");
+      document.getElementById("statusText").textContent = "Bağlı: " + dns;
     }
 
     function checkSavedState() {
-      if (localStorage.getItem(STORAGE_KEY) === "1") {
-        showConnected();
+      const savedDns = localStorage.getItem(STORAGE_KEY);
+      if (savedDns && VALID_DNS.some(dns => dns.toLowerCase() === savedDns.toLowerCase())) {
+        showConnected(savedDns);
+        input.value = "";
+        button.textContent = "Kaydedildi";
+        button.disabled = true;
       }
     }
 
     form.addEventListener("submit", (event) => {
       event.preventDefault();
-
       const value = input.value.trim();
-
-      // Doğru DNS yazıldıysa kaydet ve bağlı durumundan çıkma.
-      if (value === VALID_DNS) {
-        localStorage.setItem(STORAGE_KEY, "1");
+      const matchedDns = VALID_DNS.find(dns => dns.toLowerCase() === value.toLowerCase());
+      if (matchedDns) {
+        localStorage.setItem(STORAGE_KEY, matchedDns);
         input.value = "";
         button.textContent = "Kaydedildi";
         button.disabled = true;
-        showConnected();
+        showConnected(matchedDns);
       }
     });
 
