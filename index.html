@@ -1,1788 +1,1118 @@
 <!DOCTYPE html>
-<html lang="tr" class="dark">
+<html lang="tr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>8. Sınıf Fen 1. Yazılı Canavarı 🚀</title>
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts: Outfit & Plus Jakarta Sans -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Plus Jakarta Sans', 'sans-serif'],
-                        display: ['Outfit', 'sans-serif'],
-                    },
-                    colors: {
-                        cyber: {
-                            bg: '#090D16',
-                            card: '#131B2E',
-                            border: '#23304E',
-                            cyan: '#00F0FF',
-                            purple: '#A855F7',
-                            green: '#10B981',
-                            amber: '#F59E0B',
-                            rose: '#F43F5E'
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-
+    <title>Ahlak ve Vatandaşlık Sınav Kampı - 10'da 10</title>
     <style>
+        :root {
+            --bg: #0f172a;
+            --card: #1e293b;
+            --card-hover: #334155;
+            --primary: #6366f1;
+            --primary-glow: rgba(99, 102, 241, 0.4);
+            --accent: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --text: #f8fafc;
+            --muted: #94a3b8;
+        }
+
         * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
             -webkit-tap-highlight-color: transparent;
-            user-select: none;
         }
+
         body {
-            background-color: #090D16;
-            background-image: 
-                radial-gradient(circle at 15% 15%, rgba(168, 85, 247, 0.14) 0%, transparent 40%),
-                radial-gradient(circle at 85% 85%, rgba(0, 240, 255, 0.12) 0%, transparent 40%);
-            color: #F8FAFC;
-            overflow: hidden;
-            height: 100dvh;
-            width: 100vw;
+            background-color: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+            padding-bottom: 80px;
         }
-        /* Custom Scrollbar for inner content */
-        .custom-scroll::-webkit-scrollbar {
-            width: 5px;
-        }
-        .custom-scroll::-webkit-scrollbar-track {
-            background: rgba(19, 27, 46, 0.4);
-        }
-        .custom-scroll::-webkit-scrollbar-thumb {
-            background: rgba(168, 85, 247, 0.4);
-            border-radius: 9999px;
-        }
-        /* Animations */
-        @keyframes floatSlow {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-6px); }
-        }
-        @keyframes pulseGlow {
-            0%, 100% { box-shadow: 0 0 15px rgba(0, 240, 255, 0.25); }
-            50% { box-shadow: 0 0 28px rgba(168, 85, 247, 0.55); }
-        }
-        @keyframes popIn {
-            0% { opacity: 0; transform: scale(0.94) translateY(10px); }
-            100% { opacity: 1; transform: scale(1) translateY(0); }
-        }
-        @keyframes shakeError {
-            0%, 100% { transform: translateX(0); }
-            20%, 60% { transform: translateX(-6px); }
-            40%, 80% { transform: translateX(6px); }
-        }
-        .animate-float {
-            animation: floatSlow 3.2s ease-in-out infinite;
-        }
-        .animate-glow {
-            animation: pulseGlow 2.5s infinite;
-        }
-        .animate-pop {
-            animation: popIn 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        }
-        .animate-shake {
-            animation: shakeError 0.4s ease-in-out;
-        }
-        .glass-card {
-            background: rgba(19, 27, 46, 0.85);
+
+        /* Üst Bar - Skor ve Durum */
+        .top-bar {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(15, 23, 42, 0.9);
             backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.09);
+            padding: 12px 16px;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
-        .btn-3d {
-            transition: all 0.12s ease;
-            box-shadow: 0 4px 0 rgba(0, 0, 0, 0.45);
+
+        .brand {
+            font-weight: 800;
+            font-size: 1.1rem;
+            background: linear-gradient(90deg, #818cf8, #34d399);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: flex;
+            align-items: center;
+            gap: 6px;
         }
-        .btn-3d:active {
-            transform: translateY(3px);
-            box-shadow: 0 1px 0 rgba(0, 0, 0, 0.45);
+
+        .stats {
+            display: flex;
+            gap: 10px;
+        }
+
+        .stat-pill {
+            background: var(--card);
+            padding: 6px 12px;
+            border-radius: 999px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            border: 1px solid rgba(255,255,255,0.1);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        .xp-pill { color: #fbbf24; }
+        .streak-pill { color: #f87171; }
+
+        /* Ana Konteyner */
+        .container {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 16px;
+            flex: 1;
+        }
+
+        /* İlerleme Çubuğu */
+        .progress-box {
+            background: var(--card);
+            padding: 14px;
+            border-radius: 16px;
+            margin-bottom: 18px;
+            border: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            color: var(--muted);
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .progress-track {
+            width: 100%;
+            height: 10px;
+            background: #0f172a;
+            border-radius: 99px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            width: 0%;
+            transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Sekme Görünümleri */
+        .view-section {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .view-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* 1. Konu Kartları (Çalışma Modu) */
+        .topic-card {
+            background: var(--card);
+            border-radius: 18px;
+            padding: 18px;
+            margin-bottom: 16px;
+            border: 1px solid rgba(255,255,255,0.07);
+            position: relative;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .topic-card.learned {
+            border-color: var(--accent);
+            background: linear-gradient(145deg, #1e293b, rgba(16, 185, 129, 0.1));
+        }
+
+        .q-badge {
+            display: inline-block;
+            background: rgba(99, 102, 241, 0.2);
+            color: #818cf8;
+            font-size: 0.75rem;
+            font-weight: 800;
+            padding: 4px 10px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .topic-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            line-height: 1.4;
+            color: #fff;
+        }
+
+        .answer-box {
+            background: rgba(15, 23, 42, 0.6);
+            border-left: 4px solid var(--primary);
+            padding: 12px 14px;
+            border-radius: 0 12px 12px 0;
+            font-size: 0.94rem;
+            line-height: 1.6;
+            color: #e2e8f0;
+            margin-bottom: 12px;
+        }
+
+        .answer-box ul {
+            padding-left: 18px;
+            margin-top: 6px;
+        }
+
+        .answer-box li {
+            margin-bottom: 6px;
+        }
+
+        .key-tip {
+            background: rgba(245, 158, 11, 0.12);
+            border: 1px dashed rgba(245, 158, 11, 0.4);
+            color: #fcd34d;
+            padding: 10px 12px;
+            border-radius: 12px;
+            font-size: 0.84rem;
+            margin-bottom: 14px;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+        }
+
+        .learn-btn {
+            width: 100%;
+            padding: 12px;
+            border-radius: 12px;
+            border: none;
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            background: var(--primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: all 0.2s;
+        }
+
+        .learn-btn.done {
+            background: var(--accent);
+        }
+
+        .learn-btn:active {
+            transform: scale(0.97);
+        }
+
+        /* 2. Flashcard (Ezber Kartları) */
+        .flashcard-wrapper {
+            perspective: 1000px;
+            height: 360px;
+            margin-bottom: 20px;
+        }
+
+        .flashcard {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+        }
+
+        .flashcard.flipped {
+            transform: rotateY(180deg);
+        }
+
+        .fc-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 24px;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.35);
+            border: 2px solid rgba(255,255,255,0.1);
+        }
+
+        .fc-front {
+            background: linear-gradient(135deg, #1e293b, #0f172a);
+        }
+
+        .fc-back {
+            background: linear-gradient(135deg, #312e81, #1e1b4b);
+            transform: rotateY(180deg);
+            overflow-y: auto;
+            justify-content: flex-start;
+            text-align: left;
+        }
+
+        .fc-hint {
+            position: absolute;
+            bottom: 16px;
+            font-size: 0.8rem;
+            color: var(--muted);
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .fc-controls {
+            display: flex;
+            gap: 12px;
+        }
+
+        .fc-btn {
+            flex: 1;
+            padding: 14px;
+            border-radius: 14px;
+            border: none;
+            background: var(--card);
+            color: var(--text);
+            font-weight: 700;
+            font-size: 0.95rem;
+            cursor: pointer;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .fc-btn.primary {
+            background: var(--primary);
+        }
+
+        /* 3. Quiz (Bilgi Yarışması) */
+        .quiz-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 14px;
+        }
+
+        .question-card {
+            background: var(--card);
+            padding: 20px;
+            border-radius: 20px;
+            margin-bottom: 16px;
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .question-text {
+            font-size: 1.1rem;
+            font-weight: 700;
+            line-height: 1.45;
+            margin-bottom: 18px;
+        }
+
+        .option-btn {
+            width: 100%;
+            text-align: left;
+            padding: 14px 16px;
+            margin-bottom: 10px;
+            border-radius: 14px;
+            background: rgba(15, 23, 42, 0.7);
+            border: 2px solid rgba(255,255,255,0.08);
+            color: var(--text);
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .option-btn:hover {
+            border-color: var(--primary);
+        }
+
+        .option-btn.correct {
+            background: rgba(16, 185, 129, 0.2);
+            border-color: var(--accent);
+            color: #6ee7b7;
+        }
+
+        .option-btn.wrong {
+            background: rgba(239, 68, 68, 0.2);
+            border-color: var(--danger);
+            color: #fca5a5;
+        }
+
+        .feedback-banner {
+            padding: 14px;
+            border-radius: 14px;
+            margin-top: 12px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: none;
+        }
+
+        /* 4. 10'dan 5'i Çıkacak - Sınav Simülatörü */
+        .sim-intro {
+            background: linear-gradient(135deg, #4f46e5, #059669);
+            padding: 20px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(79, 70, 229, 0.3);
+        }
+
+        .sim-intro h2 {
+            font-size: 1.3rem;
+            margin-bottom: 6px;
+        }
+
+        .sim-intro p {
+            font-size: 0.9rem;
+            opacity: 0.95;
+            margin-bottom: 14px;
+        }
+
+        .roll-btn {
+            background: #fff;
+            color: #1e1b4b;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 99px;
+            font-weight: 800;
+            font-size: 0.95rem;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            transition: transform 0.2s;
+        }
+
+        .roll-btn:active {
+            transform: scale(0.95);
+        }
+
+        .sim-paper {
+            background: var(--card);
+            padding: 18px;
+            border-radius: 18px;
+            margin-bottom: 14px;
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .sim-textarea {
+            width: 100%;
+            min-height: 85px;
+            background: #0f172a;
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 12px;
+            padding: 12px;
+            color: #fff;
+            font-size: 0.92rem;
+            margin: 10px 0;
+            resize: vertical;
+        }
+
+        .sim-check-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 10px 16px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            cursor: pointer;
+        }
+
+        .keyword-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 10px;
+        }
+
+        .kw-tag {
+            font-size: 0.75rem;
+            padding: 4px 9px;
+            border-radius: 6px;
+            background: rgba(255,255,255,0.07);
+            color: var(--muted);
+            font-weight: 600;
+        }
+
+        .kw-tag.matched {
+            background: rgba(16, 185, 129, 0.25);
+            color: #6ee7b7;
+            border: 1px solid var(--accent);
+        }
+
+        /* Alt Gezinme Çubuğu (Mobil Tab Bar) */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(12px);
+            border-top: 1px solid rgba(255,255,255,0.08);
+            display: flex;
+            justify-content: space-around;
+            padding: 8px 6px;
+            z-index: 200;
+        }
+
+        .nav-item {
+            flex: 1;
+            background: none;
+            border: none;
+            color: var(--muted);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 6px 4px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .nav-item.active {
+            color: #818cf8;
+            background: rgba(99, 102, 241, 0.12);
+        }
+
+        .nav-icon {
+            font-size: 1.25rem;
+        }
+
+        /* Toast Bildirimi */
+        .toast {
+            position: fixed;
+            top: 70px;
+            left: 50%;
+            transform: translateX(-50%) translateY(-20px);
+            background: #10b981;
+            color: #064e3b;
+            font-weight: 800;
+            padding: 10px 20px;
+            border-radius: 99px;
+            font-size: 0.9rem;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s ease;
+            z-index: 300;
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
         }
     </style>
 </head>
-<body class="flex flex-col justify-between relative">
+<body>
 
-    <!-- Confetti Canvas Overlay -->
-    <canvas id="confettiCanvas" class="fixed inset-0 pointer-events-none z-50"></canvas>
-
-    <!-- Floating Score Popup Container -->
-    <div id="scorePopupContainer" class="fixed top-16 right-6 pointer-events-none z-50"></div>
-
-    <!-- ==================== TOP HUD (HER ZAMAN GÖRÜNÜR) ==================== -->
-    <header class="w-full max-w-lg mx-auto px-3 pt-2.5 pb-2 z-30 shrink-0">
-        <div class="glass-card rounded-2xl p-2.5 flex items-center justify-between shadow-lg">
-            <!-- Left: Home / Back & Rank -->
-            <div class="flex items-center gap-2">
-                <button id="homeBtn" onclick="goHome()" class="w-9 h-9 rounded-xl bg-slate-800/90 hover:bg-slate-700 border border-slate-700 flex items-center justify-center text-cyan-400 active:scale-95 transition" title="Ana Menü">
-                    <i class="fa-solid fa-house text-sm"></i>
-                </button>
-                <div>
-                    <div class="flex items-center gap-1.5">
-                        <span id="rankIcon" class="text-base">🧪</span>
-                        <span id="rankTitle" class="font-display font-bold text-xs sm:text-sm bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">Fen Çırağı</span>
-                    </div>
-                    <!-- XP Progress Mini Bar -->
-                    <div class="w-24 sm:w-28 h-1.5 bg-slate-800 rounded-full overflow-hidden mt-0.5">
-                        <div id="xpBar" class="h-full bg-gradient-to-r from-cyan-400 to-purple-500 transition-all duration-500" style="width: 10%"></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Center: Score & Streak -->
-            <div class="flex items-center gap-2">
-                <!-- Streak Pill -->
-                <div id="streakBadge" class="flex items-center gap-1 bg-orange-500/15 border border-orange-500/40 px-2.5 py-1 rounded-xl">
-                    <span class="text-sm">🔥</span>
-                    <span id="streakCount" class="font-display font-extrabold text-xs text-orange-400">0</span>
-                </div>
-                <!-- Score Pill -->
-                <div class="flex items-center gap-1 bg-amber-500/15 border border-amber-500/40 px-2.5 py-1 rounded-xl">
-                    <span class="text-sm">⭐</span>
-                    <span id="scoreCount" class="font-display font-extrabold text-xs sm:text-sm text-amber-300">0</span>
-                </div>
-            </div>
-
-            <!-- Right: Quick Cheat Sheet, Sound & HTML Download -->
-            <div class="flex items-center gap-1.5">
-                <button onclick="openCheatSheet()" class="w-8 h-8 rounded-xl bg-purple-500/20 border border-purple-500/40 text-purple-300 flex items-center justify-center text-xs active:scale-95" title="Hızlı Şifreler Özeti">
-                    <i class="fa-solid fa-bolt"></i>
-                </button>
-                <button id="soundBtn" onclick="toggleSound()" class="w-8 h-8 rounded-xl bg-slate-800 border border-slate-700 text-slate-300 flex items-center justify-center text-xs active:scale-95" title="Ses Aç/Kapat">
-                    <i id="soundIcon" class="fa-solid fa-volume-high text-cyan-400"></i>
-                </button>
-                <button onclick="downloadThisApp()" class="px-2.5 h-8 rounded-xl bg-emerald-500/20 hover:bg-emerald-500/30 border border-emerald-500/50 text-emerald-300 flex items-center gap-1 text-xs font-bold active:scale-95" title="Telefonuna HTML Olarak İndir">
-                    <i class="fa-solid fa-download"></i>
-                    <span class="hidden sm:inline">İndir</span>
-                </button>
-            </div>
-        </div>
-
-        <!-- Module Progress Bar (Visible only inside a module) -->
-        <div id="moduleProgressWrapper" class="hidden mt-2 px-1">
-            <div class="flex items-center justify-between text-[11px] text-slate-400 mb-1 font-semibold">
-                <span id="currentModuleName" class="text-cyan-400 truncate">Ünite 1: Mevsimler</span>
-                <span id="stepCounterText">Adım 1 / 10</span>
-            </div>
-            <div class="w-full h-2 bg-slate-800/90 rounded-full overflow-hidden p-0.5 border border-slate-700/60">
-                <div id="moduleProgressBar" class="h-full rounded-full bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 transition-all duration-300" style="width: 10%"></div>
-            </div>
+    <!-- Üst Bilgi Barı -->
+    <header class="top-bar">
+        <div class="brand">⚡ AHLAK KAMP 10/5</div>
+        <div class="stats">
+            <div class="stat-pill xp-pill">⭐ <span id="xp-count">0</span> XP</div>
+            <div class="stat-pill streak-pill">🔥 <span id="streak-count">0</span></div>
         </div>
     </header>
 
-    <!-- ==================== MAIN SCROLLABLE VIEWPORT ==================== -->
-    <main id="mainViewport" class="flex-1 w-full max-w-lg mx-auto px-3 overflow-y-auto custom-scroll pb-4 flex flex-col">
-        <!-- Dynamic Content Injected Here via JS -->
+    <div id="toast" class="toast">+25 XP Kazandın! 🎉</div>
+
+    <main class="container">
+        <!-- Genel Çalışma İlerlemesi -->
+        <div class="progress-box">
+            <div class="progress-header">
+                <span>Sınav Hazırlık Durumu</span>
+                <span id="progress-text">0 / 10 Konu Tamam</span>
+            </div>
+            <div class="progress-track">
+                <div class="progress-fill" id="progress-fill"></div>
+            </div>
+        </div>
+
+        <!-- SEKME 1: KONU ÇALIŞMA MODU -->
+        <section id="view-study" class="view-section active">
+            <div id="study-list"></div>
+        </section>
+
+        <!-- SEKME 2: EZBER KARTLARI (FLASHCARD) -->
+        <section id="view-flash" class="view-section">
+            <div class="progress-header" style="margin-bottom:10px;">
+                <span id="fc-counter">Kart 1 / 10</span>
+                <span>Kartın üstüne dokun çevir 🔄</span>
+            </div>
+            <div class="flashcard-wrapper" onclick="flipCard()">
+                <div class="flashcard" id="flashcard">
+                    <div class="fc-face fc-front">
+                        <span class="q-badge" id="fc-badge">SORU 1</span>
+                        <h3 id="fc-question" style="font-size:1.25rem; line-height:1.4;"></h3>
+                        <div class="fc-hint">👆 Cevabı görmek için dokun</div>
+                    </div>
+                    <div class="fc-face fc-back">
+                        <span class="q-badge" style="background:rgba(16,185,129,0.2); color:#6ee7b7;">CEVAP ÖZETİ</span>
+                        <div id="fc-answer" style="font-size:0.95rem; line-height:1.55; margin-top:8px;"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="fc-controls">
+                <button class="fc-btn" onclick="prevCard()">⬅️ Önceki</button>
+                <button class="fc-btn primary" onclick="nextCard()">Sonraki ➡️</button>
+            </div>
+        </section>
+
+        <!-- SEKME 3: OYUNLU TEST (QUIZ) -->
+        <section id="view-quiz" class="view-section">
+            <div class="quiz-header">
+                <span class="q-badge" id="quiz-progress">SORU 1 / 12</span>
+                <button class="sim-check-btn" onclick="restartQuiz()" style="background:#334155;">🔄 Yeniden Başlat</button>
+            </div>
+            <div class="question-card" id="quiz-box">
+                <div class="question-text" id="quiz-q"></div>
+                <div id="quiz-options"></div>
+                <div class="feedback-banner" id="quiz-feedback"></div>
+            </div>
+        </section>
+
+        <!-- SEKME 4: 10'DAN 5'İ ÇIKACAK (SINAV SİMÜLATÖRÜ) -->
+        <section id="view-sim" class="view-section">
+            <div class="sim-intro">
+                <h2>🎲 10 Sorudan 5'i Çıkacak!</h2>
+                <p>Gerçek yazılı provası! Butona bas, rastgele 5 soru çekilsin. Cevabını yaz, sistem anahtar kelimelerini kontrol edip puanlasın!</p>
+                <button class="roll-btn" onclick="generateExam()">🎯 Rastgele 5 Soru Çek</button>
+            </div>
+            <div id="sim-questions"></div>
+        </section>
     </main>
 
-    <!-- ==================== BOTTOM STICKY ACTION BAR ==================== -->
-    <footer id="bottomActionBar" class="w-full max-w-lg mx-auto px-3 pb-3 pt-1.5 z-30 shrink-0 hidden">
-        <div class="glass-card rounded-2xl p-2.5 flex items-center gap-2 shadow-2xl border-t border-slate-700/80">
-            <button id="prevStepBtn" onclick="prevStep()" class="px-3.5 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold text-xs flex items-center gap-1.5 active:scale-95 transition">
-                <i class="fa-solid fa-chevron-left"></i> Geri
-            </button>
-            <button id="mainActionBtn" onclick="handleMainAction()" class="flex-1 py-3 px-4 rounded-xl bg-gradient-to-r from-cyan-500 via-blue-600 to-purple-600 text-white font-display font-extrabold text-sm sm:text-base tracking-wide btn-3d flex items-center justify-center gap-2">
-                <span id="mainActionText">Anladım, Tamam! Soruya Geç</span>
-                <i id="mainActionIcon" class="fa-solid fa-bolt"></i>
-            </button>
-        </div>
-    </footer>
+    <!-- Mobil Alt Menü -->
+    <nav class="bottom-nav">
+        <button class="nav-item active" onclick="switchTab('study', this)">
+            <span class="nav-icon">📚</span>
+            <span>10 Soru & Cevap</span>
+        </button>
+        <button class="nav-item" onclick="switchTab('flash', this)">
+            <span class="nav-icon">🃏</span>
+            <span>Ezber Kartı</span>
+        </button>
+        <button class="nav-item" onclick="switchTab('quiz', this)">
+            <span class="nav-icon">🎮</span>
+            <span>Bilgi Oyunu</span>
+        </button>
+        <button class="nav-item" onclick="switchTab('sim', this)">
+            <span class="nav-icon">📝</span>
+            <span>5 Soru Sınavı</span>
+        </button>
+    </nav>
 
-    <!-- ==================== HIZLI ŞİFRELER (CHEAT SHEET) MODAL ==================== -->
-    <div id="cheatSheetModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden items-center justify-center p-3">
-        <div class="glass-card w-full max-w-md max-h-[88dvh] rounded-3xl flex flex-col overflow-hidden border border-purple-500/40 animate-pop">
-            <div class="p-4 bg-gradient-to-r from-purple-900/60 to-cyan-900/60 border-b border-slate-700 flex items-center justify-between">
-                <div class="flex items-center gap-2">
-                    <span class="text-xl">⚡</span>
-                    <h3 class="font-display font-extrabold text-base text-white">Yazılı Hayat Kurtaran Şifreler</h3>
-                </div>
-                <button onclick="closeCheatSheet()" class="w-8 h-8 rounded-full bg-slate-800 text-slate-300 flex items-center justify-center">
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
-            </div>
-            <div class="p-4 overflow-y-auto custom-scroll space-y-3 text-xs sm:text-sm">
-                <div class="p-3 rounded-2xl bg-cyan-500/10 border border-cyan-500/30">
-                    <div class="font-bold text-cyan-300 mb-1">🌍 1. Mevsimler ve İklim Şifreleri</div>
-                    <ul class="space-y-1 text-slate-200 list-disc list-inside">
-                        <li>Mevsimlerin 2 sebebi: <b>Eksen Eğikliği (23°27')</b> + <b>Güneş etrafında dolanma</b>.</li>
-                        <li><span class="text-rose-400 font-bold">TUZAK:</span> Dünya'nın Güneş'e yakın/uzak olması mevsimleri <b>ETKİLEMEZ!</b></li>
-                        <li>Işın <b>DİK (90°)</b> gelirse = <b>Yaz</b> yaşanır, <b>Gölge en kısa (0)</b> olur!</li>
-                        <li><b>Rüzgar Yönü:</b> Her zaman <b>Yüksek Basınçtan (Soğuk) ➔ Alçak Basınca (Sıcak)</b> doğrudur!</li>
-                    </ul>
-                </div>
-                <div class="p-3 rounded-2xl bg-purple-500/10 border border-purple-500/30">
-                    <div class="font-bold text-purple-300 mb-1">🧬 2. DNA ve Genetik Kod Şifreleri</div>
-                    <ul class="space-y-1 text-slate-200 list-disc list-inside">
-                        <li>Büyükten küçüğe şifre: <b>KeDiGeNi</b> (<b>K</b>romozom > <b>D</b>NA > <b>G</b>en > <b>N</b>ükleotid).</li>
-                        <li>Eşleşme: <b>A = T</b> (2'li bağ) ve <b>G ≡ C</b> (3'lü bağ).</li>
-                        <li><b>Denklem:</b> Toplam Nükleotid = Toplam Şeker (Deoksiriboz) = Toplam Fosfat.</li>
-                        <li><b>DNA Onarımı:</b> Tek zincirde boşluk varsa <b>ONARILIR ✅</b>, karşılıklı iki zincir de boşsa <b>ONARILAMAZ ❌</b>.</li>
-                    </ul>
-                </div>
-                <div class="p-3 rounded-2xl bg-emerald-500/10 border border-emerald-500/30">
-                    <div class="font-bold text-emerald-300 mb-1">🧪 3. Kalıtım Şifreleri</div>
-                    <ul class="space-y-1 text-slate-200 list-disc list-inside">
-                        <li><b>Saf (Arı / Homozigot) Döl:</b> İkisi de aynı (<b>AA</b> veya <b>aa</b>).</li>
-                        <li><b>Melez (Heterozigot) Döl:</b> Biri büyük biri küçük (<b>Aa</b>).</li>
-                        <li><b>İki Melez (Aa x Aa) Çaprazlanırsa:</b> <b>%75 Baskın</b> dış görünüş, <b>%25 Çekinik (aa)</b> dış görünüş çıkar!</li>
-                        <li><span class="text-rose-400 font-bold">TUZAK:</span> Yeni doğacak çocuğun kız veya erkek olma ihtimali kaçıncı çocuk olursa olsun <b>HER ZAMAN %50 (1/2)</b>'dir!</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="p-3 border-t border-slate-800 bg-slate-900/90">
-                <button onclick="closeCheatSheet()" class="w-full py-2.5 rounded-xl bg-gradient-to-r from-purple-600 to-cyan-600 font-display font-bold text-sm text-white">
-                    Süper, Kapat ve Devam Et! 🚀
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- ==================== JAVASCRIPT ENGINE ==================== -->
     <script>
-        /**************************************************************
-         * 1. SES EFEKTLERİ MOTORU (WEB AUDIO API - HARİCİ DOSYA YOK)
-         **************************************************************/
-        let soundEnabled = true;
-        let audioCtx = null;
-
-        function getAudioCtx() {
-            if (!audioCtx) {
-                const AudioContext = window.AudioContext || window.webkitAudioContext;
-                audioCtx = new AudioContext();
+        // 10 Sorunun Tam ve Eksiksiz Ders Verisi
+        const studyData = [
+            {
+                id: 1,
+                title: "Güzel ahlak nedir? Güzel ahlaklı bireyin özelliklerini yazınız.",
+                answer: `<b>Güzel Ahlak:</b> İnsanın doğuştan getirdiği veya sonradan kazandığı, toplum tarafından sevilen, iyi ve doğru kabul edilen huylar ve davranışlar bütünüdür.<br><br>
+                <b>Güzel Ahlaklı Bireyin Özellikleri:</b>
+                <ul>
+                    <li>Yalandan kaçınır, her zaman <b>dürüst ve güvenilir</b> olur.</li>
+                    <li>İnsanlara, hayvanlara ve doğaya karşı <b>merhametli ve saygılıdır</b>.</li>
+                    <li><b>Adaletlidir</b>; kimsenin hakkını yemez ve haksızlığa karşı durur.</li>
+                    <li><b>Yardımsever ve cömerttir</b>; paylaşmayı sever.</li>
+                    <li>Söz verdiğinde sözünde durur, emanete sahip çıkar.</li>
+                    <li>Hoşgörülüdür, sabırlıdır ve öfkesini kontrol edebilir.</li>
+                </ul>`,
+                tip: "Sınav İpucu: 'İyi huylar bütünü' tanımını yazıp dürüstlük, saygı, adalet, merhamet ve yardımseverlik maddelerini sıralarsan tam puan alırsın!",
+                keywords: ["iyi", "doğru", "dürüst", "güvenilir", "saygı", "adalet", "yardımsever", "merhamet"]
+            },
+            {
+                id: 2,
+                title: "'Bana arkadaşını söyle sana kim olduğunu söyleyeyim' atasözünden yola çıkarak arkadaş seçiminin ahlaki değerlere sahip olma üzerindeki rolünü açıklayınız.",
+                answer: `İnsan, vakit geçirdiği arkadaşlarının huylarından, konuşma tarzından, alışkanlıklarından ve düşüncelerinden zamanla etkilenir.<br><br>
+                <ul>
+                    <li><b>İyi ve güzel ahlaklı arkadaşlar:</b> Bizi dürüstlüğe, derslerimizde başarıya, iyiliğe ve doğru davranışlara yönlendirir.</li>
+                    <li><b>Kötü alışkanlıkları olan arkadaşlar:</b> Bizi yalana, saygısızlığa ve zararlı davranışlara sürükleyebilir.</li>
+                    <li>Bu yüzden ahlaki değerlerimizi korumak ve geliştirmek için <b>doğru, güvenilir, saygılı ve çalışkan</b> arkadaşlar seçmeliyiz.</li>
+                </ul>`,
+                tip: "Sınav İpucu: 'Arkadaşların birbirinin davranışlarını ve alışkanlıklarını etkilemesi' vurgusunu mutlaka cümlende geçir.",
+                keywords: ["etkilenir", "alışkanlık", "iyi", "doğru", "dürüst", "yönlendirir", "güvenilir"]
+            },
+            {
+                id: 3,
+                title: "Rol model aldığımız kişilerde dikkat etmemiz gereken davranışlar nelerdir?",
+                answer: `Rol model (örnek) aldığımız kişilerin sadece dış görünüşüne veya popülerliğine değil, <b>ahlaki karakterine</b> dikkat etmeliyiz:<br><br>
+                <ul>
+                    <li><b>Dürüst ve güvenilir</b> olması, sözü ile davranışlarının tutarlı olması.</li>
+                    <li><b>Çalışkan, azimli ve sorumluluk sahibi</b> olması.</li>
+                    <li>İnsanlara karşı <b>saygılı, kibar ve adil</b> davranması.</li>
+                    <li>Zorluklar karşısında pes etmemesi ve topluma faydalı işler yapması.</li>
+                    <li>Zararlı alışkanlıklardan ve şiddetten uzak durması.</li>
+                </ul>`,
+                tip: "Sınav İpucu: 'Söz ve davranış tutarlılığı, dürüstlük, çalışkanlık ve topluma faydalı olma' en kritik 4 maddedir.",
+                keywords: ["dürüst", "tutarlı", "çalışkan", "sorumluluk", "saygılı", "adil", "faydalı"]
+            },
+            {
+                id: 4,
+                title: "Ahlaki ölçütler nelerdir?",
+                answer: `Bir davranışın "iyi mi yoksa kötü mü", "doğru mu yoksa yanlış mı" olduğunu değerlendirmemizi sağlayan temel dayanaklara <b>ahlaki ölçütler</b> denir:<br><br>
+                <ul>
+                    <li><b>Vicdan:</b> İnsanın içindeki iyiyi kötüden ayıran iç mahkeme.</li>
+                    <li><b>Akıl ve Mantık:</b> Davranışın sonuçlarını düşünerek doğruyu bulma.</li>
+                    <li><b>Toplumsal Değerler (Örf, Adet, Gelenekler):</b> Toplumun ortak kabul ettiği görgü ve ahlak kuralları.</li>
+                    <li><b>Dini Kurallar:</b> İlahi emir, öğüt ve yasaklar.</li>
+                    <li><b>Hukuk Kuralları ve Evrensel İnsan Hakları:</b> Adaleti ve toplumsal düzeni sağlayan kurallar.</li>
+                </ul>`,
+                tip: "Sınav İpucu: 'Vicdan, Akıl, Gelenekler (Toplumsal Değerler), Din ve Hukuk/Evrensel Değerler' beşlisini kodla!",
+                keywords: ["vicdan", "akıl", "toplum", "gelenek", "din", "hukuk", "evrensel"]
+            },
+            {
+                id: 5,
+                title: "Aşağıdaki kavramların anlamlarını yazınız: Adalet, Hak, Dayanışma, Barış ve Sorumluluk.",
+                answer: `<ul>
+                    <li><b>Adalet:</b> Herkese eşit ve hak ettiği şekilde davranmak, doğruluktan ayrılmamak ve hakkı sahibine vermektir.</li>
+                    <li><b>Hak:</b> Hukuk kurallarının veya toplumsal değerlerin bireylere tanıdığı yetki, özgürlük ve kazanımlardır (Örn: Eğitim hakkı, yaşama hakkı).</li>
+                    <li><b>Dayanışma:</b> Bir toplumu oluşturan bireylerin özellikle zor zamanlarda yardımlaşması, birbirine destek olması ve birlik içinde hareket etmesidir.</li>
+                    <li><b>Barış:</b> İnsanların kavga, çatışma ve düşmanlık olmadan; sevgi, saygı ve hoşgörü içinde huzurla bir arada yaşamasıdır.</li>
+                    <li><b>Sorumluluk:</b> Bireyin üzerine düşen görevleri zamanında yapması ve kendi davranışlarının sonuçlarını üstlenmesidir.</li>
+                </ul>`,
+                tip: "Sınav İpucu: Her kavram için 1 net cümle yeterlidir: Adalet=Hakkı teslim etmek, Hak=Tanınan yetki, Dayanışma=Yardımlaşma/Birlik, Barış=Huzur/Çatışmasızlık, Sorumluluk=Görev ve sonuç üstlenme.",
+                keywords: ["adalet", "eşit", "hak", "yetki", "dayanışma", "yardımlaşma", "barış", "huzur", "sorumluluk", "görev"]
+            },
+            {
+                id: 6,
+                title: "Dürüst insanların özellikleri nelerdir?",
+                answer: `<ul>
+                    <li>Ne olursa olsun <b>yalan söylemezler</b>, her zaman gerçeği konuşurlar.</li>
+                    <li><b>Oldukları gibi görünürler</b>; ikiyüzlü davranmaz, kimseyi kandırmazlar.</li>
+                    <li><b>Söz verdiklerinde sözlerini tutarlar</b> ve emanete asla hıyanet etmezler.</li>
+                    <li>Sınavlarda, oyunlarda veya iş hayatında <b>hile yapmazlar</b> (kopya çekmezler).</li>
+                    <li>Hata yaptıklarında <b>hatalarını kabul edip</b> özür dilemeyi bilirler.</li>
+                    <li>Çevrelerinde <b>güvenilir</b> insan olarak tanınırlar.</li>
+                </ul>`,
+                tip: "Sınav İpucu: Yalan söylememek, hile yapmamak, sözünde durmak, emaneti korumak ve hatasını kabul etmek.",
+                keywords: ["yalan", "gerçek", "söz", "emanet", "hile", "kopya", "güvenilir", "hata"]
+            },
+            {
+                id: 7,
+                title: "Olgu ve olay kavramlarını birer örnekle açıklayınız.",
+                answer: `<ul>
+                    <li><b>Olay:</b> Başlangıç ve bitiş zamanı ile yeri belli olan, bir defada gerçekleşen somut ve tekil gelişmelerdir.<br>
+                    <i>👉 Örnek:</i> 29 Ekim 1923'te Cumhuriyet'in ilan edilmesi (veya dün İzmir'de yağmur yağması).</li><br>
+                    <li><b>Olgu:</b> Belli bir yer ve zamanla sınırlı olmayan, olayların sonucunda ortaya çıkan, uzun süreli, genel ve süreklilik gösteren süreçlerdir.<br>
+                    <i>👉 Örnek:</i> Türkiye'nin çağdaşlaşması / demokratikleşmesi (veya Anadolu'nun Türkleşmesi, iklimin değişmesi).</li>
+                </ul>`,
+                tip: "Sınav İpucu: Olay = Yeri ve tarihi belli tekil durum (İstanbul'un Fethi). Olgu = Uzun süreli genel süreç (Anadolu'nun Türkleşmesi).",
+                keywords: ["olay", "zaman", "yer", "olgu", "süreç", "genel", "örnek"]
+            },
+            {
+                id: 8,
+                title: "Okul arkadaşlarımızla ilişkilerimizde hangi ahlaki kurallara uymalıyız?",
+                answer: `<ul>
+                    <li>Arkadaşlarımıza karşı <b>saygılı, nazik ve hoşgörülü</b> olmalıyız.</li>
+                    <li><b>Alay etmemeli, lakap takmamalı</b> ve akran zorbalığından kesinlikle uzak durmalıyız.</li>
+                    <li>Arkadaşlarımızın eşyalarını <b>izinsiz kullanmamalıyız</b>.</li>
+                    <li>Dedikodu yapmamalı, arkadaşlarımızın <b>sırlarını başkalarına anlatmamalıyız</b>.</li>
+                    <li>Oyunlarda ve grup çalışmalarında <b>adil olmalı, ayrımcılık yapmamalıyız</b>.</li>
+                    <li>Zor durumda olan arkadaşımıza <b>yardım etmeli</b>, sevinç ve üzüntülerini paylaşmalıyız.</li>
+                </ul>`,
+                tip: "Sınav İpucu: Lakap takmamak/zorbalık yapmamak, eşyaları izinsiz almamak, sır tutmak ve ayrımcılık yapmamak tam puan getirir.",
+                keywords: ["saygı", "zorbalık", "lakap", "izinsiz", "sır", "adil", "yardım"]
+            },
+            {
+                id: 9,
+                title: "Fikir ve sanat eserlerini kullanırken dürüst bir birey neler yapmalıdır?",
+                answer: `<ul>
+                    <li>Başkalarının ürettiği bilgi, yazı, fotoğraf, müzik veya projeleri kullanırken mutlaka <b>kaynakça (eser sahibinin adını) belirtmelidir</b>.</li>
+                    <li>Başkasının emeğini kendi eseriymiş gibi göstermemelidir (<b>İntihal / bilgi hırsızlığı yapmamalıdır</b>).</li>
+                    <li><b>Telif haklarına</b> ve emeğe saygı göstermelidir.</li>
+                    <li>Korsan kitap, film, oyun veya yazılım kullanmamalı; yasal ve orijinal ürünleri tercih etmelidir.</li>
+                    <li>Gerektiğinde eser sahibinden <b>izin almalıdır</b>.</li>
+                </ul>`,
+                tip: "Sınav İpucu: 'Kaynakça belirtmek, telif hakkına uymak, korsan kullanmamak ve intihal (emek hırsızlığı) yapmamak' altın kelimelerdir.",
+                keywords: ["kaynak", "telif", "korsan", "izin", "emek", "intihal", "sahip"]
+            },
+            {
+                id: 10,
+                title: "Türkiye'de ya da dünyada meydana gelen bir doğal afet karşısında hangi davranışları göstermeliyiz?",
+                answer: `<ul>
+                    <li>Afetzedelerin acısını paylaşmalı, <b>empati kurmalı ve duyarlı</b> olmalıyız.</li>
+                    <li><b>AFAD, Kızılay</b> gibi güvenilir kurumlar aracılığıyla maddi veya eşya/gıda <b>yardımında bulunmalıyız</b> (Dayanışma göstermeliyiz).</li>
+                    <li>Sosyal medyada panik yaratacak <b>yalan ve asılsız haberleri paylaşmamalı</b>, yalnızca resmi açıklamaları takip etmeliyız.</li>
+                    <li>Fırsatçılık yapanlara (fahiş fiyat artıranlara) tepki göstermeli, ahlaki sorumlulukla hareket etmeliyiz.</li>
+                    <li>İmkanımız varsa <b>gönüllü</b> çalışmalara ve kan bağışı kampanyalarına destek olmalıyız.</li>
+                </ul>`,
+                tip: "Sınav İpucu: Yardımlaşma (AFAD/Kızılay), empati/dayanışma, asılsız haber yaymamak ve fırsatçılıktan kaçınmak.",
+                keywords: ["yardım", "dayanışma", "empati", "kızılay", "afad", "haber", "gönüllü"]
             }
-            if (audioCtx.state === 'suspended') {
-                audioCtx.resume();
+        ];
+
+        // Çoktan Seçmeli Oyun Soruları
+        const quizQuestions = [
+            {
+                q: "1. Aşağıdakilerden hangisi güzel ahlaklı bir bireyin özelliklerinden biri DEĞİLDİR?",
+                options: [
+                    "Verdiği sözde durmak ve emaneti korumak",
+                    "Kendi çıkarı için başkalarının hakkını yemek",
+                    "İnsanlara ve doğaya karşı merhametli olmak",
+                    "Haksızlıklar karşısında adaleti savunmak"
+                ],
+                ans: 1,
+                exp: "Güzel ahlaklı birey adildir, kendi çıkarı için asla başkasının hakkını yemez."
+            },
+            {
+                q: "2. 'Bana arkadaşını söyle sana kim olduğunu söyleyeyim' atasözü aşağıdakilerden hangisini vurgular?",
+                options: [
+                    "Arkadaşlarımızın bizim davranışlarımız ve ahlakımız üzerinde etkili olduğunu",
+                    "Herkesin tek başına yaşaması gerektiğini",
+                    "Sadece zengin kişilerle arkadaş olunması gerektiğini",
+                    "Arkadaş seçiminin önemsiz olduğunu"
+                ],
+                ans: 0,
+                exp: "Arkadaş çevremiz zamanla huylarımızı ve ahlaki değerlerimizi doğrudan etkiler."
+            },
+            {
+                q: "3. Rol model aldığımız kişilerde öncelikle hangi özelliğe dikkat etmeliyiz?",
+                options: [
+                    "Sadece çok popüler ve ünlü olmasına",
+                    "Pahalı kıyafetler giymesine",
+                    "Söz ve davranışlarının tutarlı, dürüst ve çalışkan olmasına",
+                    "Hiç kural tanımamasına"
+                ],
+                ans: 2,
+                exp: "Rol model alınan kişilerde dürüstlük, çalışkanlık ve söz-davranış tutarlılığı esastır."
+            },
+            {
+                q: "4. İnsanın içindeki iyiyi kötüden ayıran ve 'iç mahkeme' olarak adlandırılan ahlaki ölçüt hangisidir?",
+                options: ["Korsan", "Vicdan", "Olgu", "Telif"],
+                ans: 1,
+                exp: "Vicdan, doğru ile yanlışı ayırt etmemizi sağlayan en temel içsel ahlaki ölçüttür."
+            },
+            {
+                q: "5. 'Herkese eşit ve hak ettiği şekilde davranmak, hakkı sahibine vermek' hangi kavramın tanımıdır?",
+                options: ["Dayanışma", "Sorumluluk", "Adalet", "Olgu"],
+                ans: 2,
+                exp: "Adalet, herkese hak ettiğini vermek ve doğruluktan ayrılmamaktır."
+            },
+            {
+                q: "6. Bireyin üzerine düşen görevleri yapması ve davranışlarının sonuçlarını üstlenmesine ne denir?",
+                options: ["Sorumluluk", "Barış", "Olay", "Telif Hakkı"],
+                ans: 0,
+                exp: "Kendi davranışlarımızın sonuçlarını üstlenmek sorumluluktur."
+            },
+            {
+                q: "7. Aşağıdakilerden hangisi 'OLAY' kavramına doğru bir örnektir?",
+                options: [
+                    "Anadolu'nun Türkleşmesi",
+                    "Türkiye'nin çağdaşlaşması",
+                    "29 Ekim 1923'te Cumhuriyet'in ilan edilmesi",
+                    "Dünya ikliminin zamanla değişmesi"
+                ],
+                ans: 2,
+                exp: "Olay; yeri, başlangıç ve bitiş tarihi belli olan tekil gelişmedir (29 Ekim 1923)."
+            },
+            {
+                q: "8. Aşağıdakilerden hangisi 'OLGU' kavramının özelliğidir?",
+                options: [
+                    "Bir anda olup bitmesi",
+                    "Belli bir yer ve zamanla sınırlı olmayan, uzun süreli genel süreç olması",
+                    "Sadece tek bir kişiyi ilgilendirmesi",
+                    "Tarihinin ve saatinin net olarak bilinmesi"
+                ],
+                ans: 1,
+                exp: "Olgu, olayların sonucunda oluşan uzun süreli ve genel süreçlerdir."
+            },
+            {
+                q: "9. Okul arkadaşlarımızla ilişkilerimizde hangi davranış ahlaki kurallara AYKIRIDIR?",
+                options: [
+                    "Arkadaşlarımızın eşyalarını izin alarak kullanmak",
+                    "Oyunlarda ayrımcılık yapmadan adil olmak",
+                    "Arkadaşlarımıza lakap takmak ve sırlarını başkalarına anlatmak",
+                    "Zor zamanlarında onlara destek olmak"
+                ],
+                ans: 2,
+                exp: "Lakap takmak, alay etmek ve sırları ifşa etmek arkadaşlık ahlakına tamamen aykırıdır."
+            },
+            {
+                q: "10. Fikir ve sanat eserlerini kullanırken dürüst bir birey aşağıdakilerden hangisini yapmalıdır?",
+                options: [
+                    "Başkasının ödevini veya projesini kendi yapmış gibi teslim etmeli",
+                    "Korsan ürünler tercih etmeli",
+                    "Eser sahibinin adını (kaynakça) belirtmeli ve telif haklarına saygı duymalı",
+                    "İnternetteki her bilgiyi izinsiz satmalı"
+                ],
+                ans: 2,
+                exp: "Dürüst birey intihal (bilgi hırsızlığı) yapmaz, kaynakça belirtir ve telif hakkına saygı duyar."
+            },
+            {
+                q: "11. Bir doğal afet meydana geldiğinde aşağıdaki davranışlardan hangisini yapmalıyız?",
+                options: [
+                    "Sosyal medyada doğruluğu kesin olmayan panik haberlerini yaymak",
+                    "AFAD ve Kızılay gibi kurumlarla yardımlaşarak dayanışma göstermek",
+                    "Temel ihtiyaç ürünlerinin fiyatlarını artırmak",
+                    "Afetzedelerin durumuna kayıtsız kalmak"
+                ],
+                ans: 1,
+                exp: "Doğal afetlerde resmi kurumlarla (AFAD, Kızılay) dayanışma içinde olmak ve asılsız haber yaymamak gerekir."
+            },
+            {
+                q: "12. Bir toplumu oluşturan bireylerin zor zamanlarda birbirine destek olması ve yardımlaşmasına ne ad verilir?",
+                options: ["Dayanışma", "İntihal", "Olgu", "Önyargı"],
+                ans: 0,
+                exp: "Toplumdaki bireylerin yardımlaşarak birlik olması dayanışmadır."
             }
-            return audioCtx;
-        }
+        ];
 
-        function playSound(type) {
-            if (!soundEnabled) return;
-            try {
-                const ctx = getAudioCtx();
-                const now = ctx.currentTime;
+        // Uygulama Durumu
+        let xp = 0;
+        let streak = 0;
+        let learnedSet = new Set();
+        let currentCard = 0;
+        let currentQuiz = 0;
 
-                if (type === 'click') {
-                    const osc = ctx.createOscillator();
-                    const gain = ctx.createGain();
-                    osc.type = 'sine';
-                    osc.frequency.setValueAtTime(520, now);
-                    osc.frequency.exponentialRampToValueAtTime(700, now + 0.06);
-                    gain.gain.setValueAtTime(0.12, now);
-                    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.06);
-                    osc.connect(gain);
-                    gain.connect(ctx.destination);
-                    osc.start(now);
-                    osc.stop(now + 0.06);
-                } else if (type === 'correct') {
-                    const notes = [523.25, 659.25, 783.99, 1046.50]; // C5, E5, G5, C6
-                    notes.forEach((freq, idx) => {
-                        const osc = ctx.createOscillator();
-                        const gain = ctx.createGain();
-                        osc.type = 'triangle';
-                        osc.frequency.setValueAtTime(freq, now + idx * 0.07);
-                        gain.gain.setValueAtTime(0.18, now + idx * 0.07);
-                        gain.gain.exponentialRampToValueAtTime(0.001, now + idx * 0.07 + 0.18);
-                        osc.connect(gain);
-                        gain.connect(ctx.destination);
-                        osc.start(now + idx * 0.07);
-                        osc.stop(now + idx * 0.07 + 0.18);
-                    });
-                } else if (type === 'wrong') {
-                    const osc = ctx.createOscillator();
-                    const gain = ctx.createGain();
-                    osc.type = 'sawtooth';
-                    osc.frequency.setValueAtTime(220, now);
-                    osc.frequency.linearRampToValueAtTime(130, now + 0.28);
-                    gain.gain.setValueAtTime(0.16, now);
-                    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.3);
-                    osc.connect(gain);
-                    gain.connect(ctx.destination);
-                    osc.start(now);
-                    osc.stop(now + 0.3);
-                } else if (type === 'victory') {
-                    const notes = [440, 554.37, 659.25, 880, 659.25, 880];
-                    const times = [0, 0.1, 0.2, 0.3, 0.45, 0.58];
-                    notes.forEach((freq, i) => {
-                        const osc = ctx.createOscillator();
-                        const gain = ctx.createGain();
-                        osc.type = 'triangle';
-                        osc.frequency.setValueAtTime(freq, now + times[i]);
-                        gain.gain.setValueAtTime(0.2, now + times[i]);
-                        gain.gain.exponentialRampToValueAtTime(0.001, now + times[i] + 0.22);
-                        osc.connect(gain);
-                        gain.connect(ctx.destination);
-                        osc.start(now + times[i]);
-                        osc.stop(now + times[i] + 0.22);
-                    });
-                }
-            } catch (e) {
-                // Ignore audio errors on restricted devices
-            }
-        }
-
-        function toggleSound() {
-            soundEnabled = !soundEnabled;
-            const icon = document.getElementById('soundIcon');
-            if (soundEnabled) {
-                icon.className = 'fa-solid fa-volume-high text-cyan-400';
-                playSound('click');
-            } else {
-                icon.className = 'fa-solid fa-volume-xmark text-slate-500';
-            }
-        }
-
-        /**************************************************************
-         * 2. KONFETİ EFEKTİ MOTORU
-         **************************************************************/
-        const confettiCanvas = document.getElementById('confettiCanvas');
-        const cCtx = confettiCanvas.getContext('2d');
-        let confettiParticles = [];
-
-        function resizeConfetti() {
-            confettiCanvas.width = window.innerWidth;
-            confettiCanvas.height = window.innerHeight;
-        }
-        window.addEventListener('resize', resizeConfetti);
-        resizeConfetti();
-
-        function fireConfetti(count = 45) {
-            const colors = ['#00F0FF', '#A855F7', '#10B981', '#F59E0B', '#F43F5E'];
-            for (let i = 0; i < count; i++) {
-                confettiParticles.push({
-                    x: window.innerWidth / 2,
-                    y: window.innerHeight * 0.45,
-                    vx: (Math.random() - 0.5) * 14,
-                    vy: (Math.random() - 0.9) * 14,
-                    size: Math.random() * 7 + 4,
-                    color: colors[Math.floor(Math.random() * colors.length)],
-                    rot: Math.random() * 360,
-                    vRot: (Math.random() - 0.5) * 12,
-                    life: 1
-                });
-            }
-            if (confettiParticles.length === count) {
-                requestAnimationFrame(updateConfetti);
-            }
-        }
-
-        function updateConfetti() {
-            cCtx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
-            confettiParticles.forEach((p) => {
-                p.x += p.vx;
-                p.y += p.vy;
-                p.vy += 0.38; // gravity
-                p.rot += p.vRot;
-                p.life -= 0.016;
-
-                cCtx.save();
-                cCtx.translate(p.x, p.y);
-                cCtx.rotate((p.rot * Math.PI) / 180);
-                cCtx.globalAlpha = Math.max(0, p.life);
-                cCtx.fillStyle = p.color;
-                cCtx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size);
-                cCtx.restore();
-            });
-            confettiParticles = confettiParticles.filter((p) => p.life > 0);
-            if (confettiParticles.length > 0) {
-                requestAnimationFrame(updateConfetti);
-            }
-        }
-
-        /**************************************************************
-         * 3. OYUNCU DURUMU (STATE) & RÜTBE SİSTEMİ
-         **************************************************************/
-        let state = {
-            score: 0,
-            streak: 0,
-            bestStreak: 0,
-            completedModules: {},
-            currentModuleId: null,
-            currentStepIndex: 0,
-            questionAnswered: false,
-            moduleCorrectCount: 0,
-            moduleQuestionCount: 0,
-            // Interactive mini-widget states
-            selectedSeasonDate: '21haz',
-            selectedDnaCase: 'repairable',
-            parent1Genotype: 'Aa',
-            parent2Genotype: 'Aa'
+        // Başlangıç Yüklemesi
+        window.onload = () => {
+            renderStudyList();
+            renderFlashcard();
+            renderQuizQuestion();
+            generateExam();
         };
 
-        // Load saved score if available
-        try {
-            const saved = localStorage.getItem('fen8_yazili_state');
-            if (saved) {
-                const parsed = JSON.parse(saved);
-                state.score = parsed.score || 0;
-                state.bestStreak = parsed.bestStreak || 0;
-                state.completedModules = parsed.completedModules || {};
-            }
-        } catch (e) {}
-
-        function saveState() {
-            try {
-                localStorage.setItem('fen8_yazili_state', JSON.stringify({
-                    score: state.score,
-                    bestStreak: state.bestStreak,
-                    completedModules: state.completedModules
-                }));
-            } catch (e) {}
+        function addXP(amount, msg) {
+            xp += amount;
+            document.getElementById('xp-count').innerText = xp;
+            const toast = document.getElementById('toast');
+            toast.innerText = msg || `+${amount} XP Kazandın! 🎉`;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 1800);
         }
 
-        const RANKS = [
-            { min: 0, title: 'Fen Çırağı', icon: '🌱' },
-            { min: 300, title: 'Laboratuvar Avcısı', icon: '🔬' },
-            { min: 800, title: 'DNA Şifrecisi', icon: '🧬' },
-            { min: 1500, title: 'Kalıtım Ustası', icon: '⚡' },
-            { min: 2400, title: 'Fen Efsanesi (100\'lük)', icon: '👑' }
-        ];
-
-        function updateHUD() {
-            document.getElementById('scoreCount').textContent = state.score;
-            document.getElementById('streakCount').textContent = state.streak;
-
-            // Determine Rank
-            let currentRank = RANKS[0];
-            let nextRank = RANKS[1];
-            for (let i = 0; i < RANKS.length; i++) {
-                if (state.score >= RANKS[i].min) {
-                    currentRank = RANKS[i];
-                    nextRank = RANKS[i + 1] || null;
-                }
-            }
-            document.getElementById('rankIcon').textContent = currentRank.icon;
-            document.getElementById('rankTitle').textContent = currentRank.title;
-
-            let pct = 100;
-            if (nextRank) {
-                pct = Math.min(100, Math.max(8, Math.round(((state.score - currentRank.min) / (nextRank.min - currentRank.min)) * 100)));
-            }
-            document.getElementById('xpBar').style.width = pct + '%';
+        function switchTab(tabId, btn) {
+            document.querySelectorAll('.view-section').forEach(s => s.classList.remove('active'));
+            document.getElementById('view-' + tabId).classList.add('active');
+            document.querySelectorAll('.nav-item').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        function addPoints(points) {
-            state.score += points;
-            saveState();
-            updateHUD();
-
-            // Floating +Points animation
-            const container = document.getElementById('scorePopupContainer');
-            const badge = document.createElement('div');
-            badge.className = 'font-display font-black text-base text-amber-300 bg-amber-500/20 border border-amber-400/50 px-3 py-1 rounded-full shadow-lg animate-bounce';
-            badge.textContent = `+${points} Puan ⭐`;
-            container.appendChild(badge);
-            setTimeout(() => badge.remove(), 1100);
+        // 1. ÇALIŞMA LİSTESİ RENDER
+        function renderStudyList() {
+            const container = document.getElementById('study-list');
+            container.innerHTML = studyData.map(item => {
+                const isDone = learnedSet.has(item.id);
+                return `
+                <div class="topic-card ${isDone ? 'learned' : ''}" id="topic-${item.id}">
+                    <span class="q-badge">SORU ${item.id}</span>
+                    <div class="topic-title">${item.title}</div>
+                    <div class="answer-box">${item.answer}</div>
+                    <div class="key-tip">💡 <span>${item.tip}</span></div>
+                    <button class="learn-btn ${isDone ? 'done' : ''}" onclick="toggleLearned(${item.id})">
+                        ${isDone ? '✅ Ezberledim / Tamamlandı' : '🎯 Bu Soruyu Öğrendim (+20 XP)'}
+                    </button>
+                </div>`;
+            }).join('');
         }
 
-        /**************************************************************
-         * 4. MÜFREDAT İÇERİĞİ (ÖĞRET -> DEVAM/TAMAM -> SORU SOR)
-         **************************************************************/
-        const MODULES = [
-            // ==========================================================
-            // ÜNİTE 1: MEVSİMLER VE İKLİM
-            // ==========================================================
-            {
-                id: 'mevsimler',
-                title: '1. Ünite: Mevsimler ve İklim',
-                shortTitle: '🌍 Mevsimler ve İklim',
-                subtitle: 'Eksen Eğikliği, 4 Tarih, Basınç & Rüzgar, İklim',
-                badge: '6 Konu + 6 Soru',
-                color: 'from-cyan-500 to-blue-600',
-                icon: '🌍',
-                steps: [
-                    // ADIM 1: KONU
-                    {
-                        type: 'learn',
-                        tag: 'BÖLÜM 1/4 • TEMEL KURAL',
-                        title: 'Mevsimler Nasıl Oluşur? 🌍',
-                        summary: 'Yazılıda kesin çıkacak ilk bilgi! Mevsimlerin oluşmasının SADECE 2 temel sebebi vardır:',
-                        points: [
-                            { icon: '📐', title: '1. Eksen Eğikliği (23° 27\')', desc: 'Dünya düz durmaz, sağa doğru 23 derece 27 dakika eğik durur. Bu yüzden Kuzey ve Güney Yarım Küre aynı anda farklı mevsimler yaşar!' },
-                            { icon: '🔄', title: '2. Güneş Etrafında Dolanma (Yıllık Hareket)', desc: 'Dünya Güneş etrafında 365 gün 6 saatte dolanır. Dolanırken güneşe dönük yarım küre değişir.' },
-                            { icon: '☀️', title: 'Dik Açı = Sıcak = Gölge Kısa!', desc: 'Güneş ışınları nereye DİK (90°\'ye yakın) gelirse orası YAZ yaşar, birim yüzeye düşen enerji FAZLA olur ve GÖLGE BOYU EN KISA olur!' }
-                        ],
-                        trap: 'DİKKAT SINAV TUZAĞI: Dünya\'nın Güneş\'e yaklaşması veya uzaklaşması mevsimleri ETKİLEMEZ! Hatta Dünya 3 Ocak\'ta Güneş\'e en yakındır ama Türkiye\'de Kış yaşanır!',
-                        buttonText: 'Anladım, Tamam! Soruya Geç ⚡'
-                    },
-                    // ADIM 2: SORU 1
-                    {
-                        type: 'quiz',
-                        question: 'Aşağıdakilerden hangisi mevsimlerin oluşum sebeplerinden biri DEĞİLDİR?',
-                        options: [
-                            'Dünya\'nın dönme ekseninin 23° 27\' eğik olması',
-                            'Dünya\'nın Güneş etrafında dolanma hareketi yapması',
-                            'Dünya\'nın Güneş\'e olan uzaklığının yıl içinde değişmesi',
-                            'Güneş ışınlarının yıl içinde düşme açısının değişmesi'
-                        ],
-                        correct: 2,
-                        explanation: 'Harikasın! Dünya\'nın Güneş\'e yakın veya uzak olması mevsimlerin oluşumunu ETKİLEMEZ. Mevsimler sadece Eksen Eğikliği + Yıllık Dolanma ile oluşur!'
-                    },
-                    // ADIM 3: KONU 2 (İNTERAKTİF TARİH SEÇİCİ İLE)
-                    {
-                        type: 'learn',
-                        tag: 'BÖLÜM 2/4 • 4 KRİTİK TARİH',
-                        title: '21 Haziran, 21 Aralık & Ekinokslar 📅',
-                        summary: 'Biz (Türkiye) Kuzey Yarım Küre\'deyiz (KYK). Güney Yarım Küre (GYK) ise her zaman bizim TAM TERSİMİZİ yaşar! Aşağıdaki tarihlere dokunarak test et:',
-                        widget: 'seasonInteractive',
-                        points: [
-                            { icon: '☀️', title: '21 Haziran (Gün Dönümü)', desc: 'KYK\'da YAZ başlar (En uzun gündüz). Işınlar Yengeç Dönencesi\'ne dik gelir.' },
-                            { icon: '❄️', title: '21 Aralık (Gün Dönümü)', desc: 'KYK\'da KIŞ başlar (En uzun gece). Işınlar Oğlak Dönencesi\'ne dik gelir.' },
-                            { icon: '⚖️', title: '21 Mart & 23 Eylül (Ekinoks)', desc: 'Işınlar Ekvator\'a dik düşer. Tüm Dünya\'da 12 saat gece = 12 saat gündüz eşitliği yaşanır!' }
-                        ],
-                        trap: 'GÖLGE TUZAĞI: 21 Haziran\'da Türkiye\'de öğle vakti gölge boyu EN KISA iken, Güney Yarım Küre\'de (kış olduğu için) EN UZUNDUR!',
-                        buttonText: 'Tarihleri Kapadım! Soruyu Gelsin 🚀'
-                    },
-                    // ADIM 4: SORU 2
-                    {
-                        type: 'quiz',
-                        question: '21 Aralık tarihinde Kuzey Yarım Küre (Türkiye) ve Güney Yarım Küre için hangisi DOĞRUDUR?',
-                        options: [
-                            'Türkiye\'de yaz mevsimi başlar, en uzun gündüz yaşanır.',
-                            'Güneş ışınları Yengeç Dönencesi\'ne dik açıyla düşer.',
-                            'Türkiye\'de kış başlar (en uzun gece), Güney Yarım Küre\'de yaz başlar.',
-                            'Tüm dünyada gece ve gündüz süreleri (12 saat) eşitlenir.'
-                        ],
-                        correct: 2,
-                        explanation: 'Süpersin! 21 Aralık\'ta Kuzey Yarım Küre\'de (Türkiye) KIŞ başlar ve en uzun gece yaşanır; Güney Yarım Küre\'de ise tam tersi YAZ başlar!'
-                    },
-                    // ADIM 5: KONU 3 (BASINÇ VE RÜZGAR)
-                    {
-                        type: 'learn',
-                        tag: 'BÖLÜM 3/4 • RÜZGAR & BASINÇ',
-                        title: 'Yüksek Basınç vs Alçak Basınç 💨',
-                        summary: 'Yazılıda tablo veya şekil olarak %100 çıkar! Şifremiz çok basit:',
-                        widget: 'pressureDiagram',
-                        points: [
-                            { icon: '🥶', title: 'Yüksek Basınç (SOĞUK Bölgeler)', desc: 'Soğuyan hava ağırlaşır ve aşağı iner (Alçalıcı hava hareketi). Hava AÇIK ve GÜNEŞLİDİR, bulut/yağış YOKTUR!' },
-                            { icon: '🥵', title: 'Alçak Basınç (SICAK Bölgeler)', desc: 'Isınan hava hafifler ve yukarı çıkar (Yükselici hava hareketi). Gökyüzünde BULUT ve YAĞIŞ oluşur!' },
-                            { icon: '➡️', title: 'RÜZGARIN YÖNÜ (Altın Kural)', desc: 'Rüzgar HER ZAMAN Yüksek Basınçtan (Soğuk) ➔ Alçak Basınca (Sıcak) doğru eser! (YB ➔ AB)' }
-                        ],
-                        trap: 'KELİME TUZAĞI: "Alçak basınçta alçalıcı hava vardır" derse YANLIŞ! Tam tersi: Alçak basınç sıcak olduğu için hava YÜKSELİR (Yükselici hava) ve bulut yapar!',
-                        buttonText: 'Tamam, Basınç Sorusunu Çözeyim ⚡'
-                    },
-                    // ADIM 6: SORU 3
-                    {
-                        type: 'quiz',
-                        question: 'K şehrinden L şehrine doğru rüzgar estiği biliniyor (K ➔ L). Buna göre K ve L şehirleri için hangisi kesinlikle DOĞRUDUR?',
-                        options: [
-                            'K şehri Alçak Basınç, L şehri Yüksek Basınç alanıdır.',
-                            'K şehri Yüksek Basınç (Soğuk), L şehri Alçak Basınç (Sıcak) alanıdır.',
-                            'K şehrinde yağmur yağma ihtimali L şehrinden daha fazladır.',
-                            'L şehrinde alçalıcı hava hareketi görülür.'
-                        ],
-                        correct: 1,
-                        explanation: 'Tam isabet! Rüzgar her zaman Yüksek Basınçtan (Soğuk) ➔ Alçak Basınca (Sıcak) doğru eser. K\'dan L\'ye esiyorsa K = Yüksek Basınç (Soğuk), L = Alçak Basınç (Sıcak) demektir!'
-                    },
-                    // ADIM 7: KONU 4 (İKLİM VE HAVA OLAYLARI)
-                    {
-                        type: 'learn',
-                        tag: 'BÖLÜM 4/4 • İKLİM VS HAVA OLAYI',
-                        title: 'İklim mi, Hava Olayı mı? 🌦️',
-                        summary: 'Cümleyi okuduğunda saniyesinde ayırt etmen için anahtar kelimeler:',
-                        points: [
-                            { icon: '🌍', title: 'İKLİM (Geniş + Uzun Süre + Kesin)', desc: 'En az 30-35 yıllık verilerdir. Geniş bölgeyi kapsar. Bilim dalı: KLİMATOLOJİ, Uzmanı: KLİMATOLOG. ("Yazları sıcak ve kuraktır" gibi).' },
-                            { icon: '⛅', title: 'HAVA OLAYLARI (Dar + Kısa Süre + Tahmini)', desc: 'Günlük/saatlik değişir, TAHMİNİDİR. Bilim dalı: METEOROLOJİ, Uzmanı: METEOROLOG. ("Yarın öğleden sonra sağanak yağış bekleniyor" gibi).' },
-                            { icon: '❄️', title: 'Gökyüzünde vs Yeryüzünde Yoğuşma', desc: 'Gökyüzünde (Yukarıda): Yağmur, Kar, Dolu. Yeryüzünde (Aşağıda): Çiy (su damlası), Kırağı (buz kristali), Sis.' }
-                        ],
-                        trap: 'ŞİFRE: Gökyüzünden düşenler "Yağmur - Kar - Dolu"; sabah yaprakların üstünde oluşanlar "Çiy (sıvı)" ve "Kırağı (donmuş buz kristali)"dir!',
-                        buttonText: 'Tamam! Son Sorularla Puanları Topla 🏆'
-                    },
-                    // ADIM 8: SORU 4
-                    {
-                        type: 'quiz',
-                        question: 'Aşağıdaki ifadelerden hangisi "İKLİM" ile ilgilidir?',
-                        options: [
-                            'İzmir\'de yarın sabah yoğun sis bekleniyor.',
-                            'Ankara\'da öğleden sonra başlayan dolu yağışı araçlara zarar verdi.',
-                            'Karadeniz Bölgesi\'nde her mevsim yağışlı geçer.',
-                            'Bugün hava sıcaklığı dün geceye göre 8 derece birden düştü.'
-                        ],
-                        correct: 2,
-                        explanation: 'Harika! "Karadeniz Bölgesi\'nde her mevsim yağışlı geçer" ifadesi geniş bir alanda uzun yıllar boyunca gözlenen KESİN bir iklim özelliğidir.'
-                    },
-                    // ADIM 9: SORU 5
-                    {
-                        type: 'quiz',
-                        question: 'Havada bulunan su buharının yeryüzüne yakın yerlerde (yaprak ve çimenlerin üzerinde) sıvı hale geçmeden doğrudan DONARAK buz kristallerine dönüşmesine ne denir?',
-                        options: [
-                            'Dolu',
-                            'Kırağı',
-                            'Çiy',
-                            'Yağmur'
-                        ],
-                        correct: 1,
-                        explanation: 'Bravo! Yeryüzüne yakın yerlerde (ağaç yaprakları, araba camları üzerinde) su buharının buz kristallerine dönüşmesine KIRAĞI denir!'
-                    },
-                    // ADIM 10: SORU 6
-                    {
-                        type: 'quiz',
-                        question: '21 Haziran tarihinde öğle vakti özdeş bir çubuğun gölge boyu hangi seçenekteki yerde EN KISA (Sıfıra en yakın) olur?',
-                        options: [
-                            'Yengeç Dönencesi üzerinde (Kuzey Yarım Küre)',
-                            'Oğlak Dönencesi üzerinde (Güney Yarım Küre)',
-                            'Güney Kutup Noktasında',
-                            'Ekvator çizgisinin güneyinde'
-                        ],
-                        correct: 0,
-                        explanation: 'Mükemmel! 21 Haziran\'da Güneş ışınları Kuzey Yarım Küre\'deki Yengeç Dönencesi\'ne DİK (90°) düşer, bu yüzden gölge boyu sıfır olur!'
-                    }
-                ]
-            },
-
-            // ==========================================================
-            // ÜNİTE 2: DNA VE GENETİK KOD
-            // ==========================================================
-            {
-                id: 'dna',
-                title: '2. Ünite: DNA ve Genetik Kod',
-                shortTitle: '🧬 DNA ve Genetik Kod',
-                subtitle: 'KeDiGeNi Şifresi, Nükleotid Hesabı, DNA Eşlenmesi & Onarım',
-                badge: '3 Konu + 6 Soru',
-                color: 'from-purple-600 to-pink-600',
-                icon: '🧬',
-                steps: [
-                    // ADIM 1: KONU 1 (KEDİGENİ)
-                    {
-                        type: 'learn',
-                        tag: 'BÖLÜM 1/3 • BÜYÜKTEN KÜÇÜĞE ŞİFRE',
-                        title: 'KeDiGeNi Şifresi 🐱🧬',
-                        summary: 'Hücre çekirdeğindeki kalıtsal yapıları büyükten küçüğe (karmaşıktan basite) sıralamak yazılıda banko sorulur! Şifremiz: Ke - Di - Ge - Ni',
-                        widget: 'kedigeniWidget',
-                        points: [
-                            { icon: '❌', title: '1. KROMOZOM (En Büyük / En Karmaşık)', desc: 'DNA\'nın etrafına özel protein kılıf sarılmasıyla oluşur. İnsanda 46 kromozom vardır.' },
-                            { icon: '🧬', title: '2. DNA (Yönetici Molekül)', desc: 'Hücrenin solunum, beslenme, üreme gibi tüm canlılık olaylarını yöneten çift zincirli sarmal yapıdır.' },
-                            { icon: '🧪', title: '3. GEN (Görev Birimi)', desc: 'DNA üzerinde göz rengi, kan grubu gibi belirli görevleri şifreleyen anlamlı parçalardır. (DNA\'nın GÖREV birimidir!)' },
-                            { icon: '🧱', title: '4. NÜKLEOTİD (Yapı Birimi - En Küçük)', desc: 'DNA\'yı oluşturan en küçük yapı taşıdır. (DNA\'nın YAPI birimidir!)' }
-                        ],
-                        trap: 'KARIŞTIRMA TUZAĞI: DNA\'nın "GÖREV birimi" derse ➔ GEN! DNA\'nın "YAPI birimi" derse ➔ NÜKLEOTİD! Ayrıca kromozom sayısı gelişmişliği GÖSTERMEZ (Eğrelti otunda 500 kromozom vardır!).',
-                        buttonText: 'KeDiGeNi\'yi Ezberledim! Soruya Geç ⚡'
-                    },
-                    // ADIM 2: SORU 1
-                    {
-                        type: 'quiz',
-                        question: 'Kalıtsal yapıların BASİTTEN KARMAŞIĞA (Küçükten Büyüğe) doğru sıralanışı hangisinde doğru verilmiştir?',
-                        options: [
-                            'Kromozom - DNA - Gen - Nükleotid',
-                            'Nükleotid - Gen - DNA - Kromozom',
-                            'Gen - Nükleotid - DNA - Kromozom',
-                            'Nükleotid - DNA - Gen - Kromozom'
-                        ],
-                        correct: 1,
-                        explanation: 'Süper dikkat! KeDiGeNi büyükten küçüğedir. Soru "Küçükten büyüğe (Basitten karmaşığa)" dediği için ters çeviriyoruz: Nükleotid < Gen < DNA < Kromozom!'
-                    },
-                    // ADIM 3: SORU 2
-                    {
-                        type: 'quiz',
-                        question: 'İnsan (46 kromozom), Moli balığı (46 kromozom) ve Eğrelti otu (500 kromozom) verilerine bakılarak hangisine ULAŞILAMAZ?',
-                        options: [
-                            'Farklı türe ait canlıların kromozom sayısı aynı olabilir.',
-                            'Kromozom sayısı fazla olan canlılar daha gelişmiştir.',
-                            'Kromozom sayısının canlı gelişmişliğiyle bir ilgisi yoktur.',
-                            'Aynı kromozom sayısına sahip canlılar farklı özellikte olabilir.'
-                        ],
-                        correct: 1,
-                        explanation: 'Tam isabet! Eğrelti otu 500 kromozomlu bir bitkidir ama insandan gelişmiş değildir. Yani kromozom sayısı canlının gelişmişliğini ASLA göstermez!'
-                    },
-                    // ADIM 4: KONU 2 (NÜKLEOTİD YAPISI & HESAPLAMA)
-                    {
-                        type: 'learn',
-                        tag: 'BÖLÜM 2/3 • NÜKLEOTİD VE BAĞLAR',
-                        title: 'Nükleotid Yapısı ve Eşleşme Kuralları 🔗',
-                        summary: 'Bir nükleotid 3 parçadan oluşur: Fosfat (P) + Deoksiriboz Şekeri (D) + Organik Baz (A, T, G veya C).',
-                        points: [
-                            { icon: '🏷️', title: 'İsimlendirme Kuralı', desc: 'Nükleotid hangi organik bazı taşıyorsa onun adını alır! (Adenin bazı varsa = Adenin Nükleotidi).' },
-                            { icon: '🤝', title: 'Altın Eşleşme: A = T ve G ≡ C', desc: 'Her zaman Adenin karşısına Timin (2\'li zayıf hidrojen bağı), Guanin karşısına Sitozin (3\'lü bağ) gelir!' },
-                            { icon: '🧮', title: 'Sınavda %100 Çıkan Matematik Denklemi', desc: 'Toplam Nükleotid Sayısı = Toplam Şeker Sayısı = Toplam Fosfat Sayısı = (A + T + G + C)!' }
-                        ],
-                        trap: 'MATEMATİK İPUCU: Bir DNA\'da 1000 nükleotid varsa; 1000 Şeker ve 1000 Fosfat vardır! Eğer 200 tanesi Adenin ise, 200 tanesi Timin\'dir (Toplam 400). Geriye kalan 600 nükleotidin yarısı (300) Guanin, yarısı (300) Sitozin olur!',
-                        buttonText: 'Denklemi Kaptım! Hesap Sorusuna Geç 🚀'
-                    },
-                    // ADIM 5: SORU 3
-                    {
-                        type: 'quiz',
-                        question: 'Toplam 600 deoksiriboz şekeri bulunan sağlıklı bir DNA molekülünde 120 adet Adenin nükleotidi varsa, kaç adet Guanin nükleotidi bulunur?',
-                        options: [
-                            '120',
-                            '180',
-                            '240',
-                            '360'
-                        ],
-                        correct: 1,
-                        explanation: 'Harika çözdün! 600 şeker = 600 toplam nükleotid demektir. A = 120 ise T = 120\'dir (120+120 = 240). Geriye 600 - 240 = 360 kalır. Bunu da G ve C kardeş payı bölüşür: 360 / 2 = 180 Guanin!'
-                    },
-                    // ADIM 6: SORU 4
-                    {
-                        type: 'quiz',
-                        question: 'Bir DNA modeli yapmak isteyen öğrenci elindeki 80 Fosfat, 65 Deoksiriboz Şekeri ve toplam 90 Organik Baz ile EN FAZLA kaç nükleotidlik bir DNA yapabilir?',
-                        options: [
-                            '90 nükleotidlik',
-                            '80 nükleotidlik',
-                            '65 nükleotidlik',
-                            '235 nükleotidlik'
-                        ],
-                        correct: 2,
-                        explanation: 'Süper taktik! Her nükleotid için 1 Fosfat + 1 Şeker + 1 Baz şarttır. Elimizde en az hangisinden varsa (65 Şeker) o kadar nükleotid yapabiliriz, çünkü şeker bitince üretim durur!'
-                    },
-                    // ADIM 7: KONU 3 (DNA EŞLENMESİ VE ONARIM LABI)
-                    {
-                        type: 'learn',
-                        tag: 'BÖLÜM 3/3 • EŞLENME VE ONARIM',
-                        title: 'DNA Eşlenmesi ve Hata Onarımı 🛠️',
-                        summary: 'Hücre bölünmeden hemen önce DNA kendini kopyalar (eşler) ve birbirinin tıpatıp aynısı 2 yeni DNA oluşur. Aşağıdan DNA hatalarını test et:',
-                        widget: 'dnaRepairWidget',
-                        points: [
-                            { icon: '📉', title: 'Sitoplazmada Neler Azalır?', desc: 'DNA çekirdekte eşlenirken sitoplazmadaki serbest nükleotid, şeker ve fosfatlar çekirdeğin içine girer. Bu yüzden sitoplazmada sayıları AZALIR!' },
-                            { icon: '✅', title: 'Tek Zincirde Hata / Boşluk Varsa', desc: 'Karşı zincirdeki harfe bakılarak boşluk doldurulur ve hata ONARILIR!' },
-                            { icon: '❌', title: 'Karşılıklı İki Zincirde de Boşluk Varsa', desc: 'Karşısında ne olduğu bilinemediği için bu hata KESİNLİKLE ONARILAMAZ!' }
-                        ],
-                        trap: 'GRAFİK TUZAĞI: DNA eşlenirken "Sitoplazmadaki serbest nükleotid sayısı" grafiği AZALAN çizilir, "Çekirdekteki nükleotid sayısı" grafiği ARTAN çizilir!',
-                        buttonText: 'Tamam! DNA Sorularını Bitirelim ⚡'
-                    },
-                    // ADIM 8: SORU 5
-                    {
-                        type: 'quiz',
-                        question: 'DNA\'nın kendini eşlemesi sırasında gerçekleşen olaylarla ilgili aşağıdakilerden hangisi YANLIŞTIR?',
-                        options: [
-                            'İki zincir fermuar gibi birbirinden ayrılır.',
-                            'Sitoplazmadaki serbest nükleotid sayısı zamanla artar.',
-                            'Oluşan iki yeni DNA\'nın nükleotid dizilimi başlangıçtaki DNA ile aynıdır.',
-                            'Adenin karşısına Timin, Guanin karşısına Sitozin gelir.'
-                        ],
-                        correct: 1,
-                        explanation: 'Tebrikler! Sitoplazmadaki serbest nükleotidler çekirdeğe girip kullanıldığı için sitoplazmadaki sayıları artmaz, AZALIR!'
-                    },
-                    // ADIM 9: SORU 6
-                    {
-                        type: 'quiz',
-                        question: 'Hangi durumdaki bir DNA zinciri hatası kesinlikle ONARILAMAZ?',
-                        options: [
-                            'Adenin nükleotidinin karşısına yanlışlıkla Guanin gelmesi',
-                            '1. zincirdeki Timin nükleotidinin karşısının boş kalması',
-                            'Her iki zincirde aynı hizada (karşılıklı) nükleotidlerin kopup kaybolması',
-                            '2. zincirdeki Sitozin nükleotidinin kopması'
-                        ],
-                        correct: 2,
-                        explanation: 'Efsanesin! Karşılıklı her iki zincirde de aynı anda nükleotid eksilmesi olursa hangi bazın geleceği bilinemez ve ONARILAMAZ!'
-                    }
-                ]
-            },
-
-            // ==========================================================
-            // ÜNİTE 3: KALITIM (ÇAPRAZLAMA)
-            // ==========================================================
-            {
-                id: 'kalitim',
-                title: '3. Ünite: Kalıtım ve Çaprazlama',
-                shortTitle: '🧪 Kalıtım (Çaprazlama)',
-                subtitle: 'Baskın/Çekinik Gen, Saf/Melez Döl, Canlı Çaprazlama Makinesi',
-                badge: '3 Konu + 6 Soru',
-                color: 'from-emerald-500 to-teal-600',
-                icon: '🧪',
-                steps: [
-                    // ADIM 1: KONU 1 (KALITIM KAVRAMLARI)
-                    {
-                        type: 'learn',
-                        tag: 'BÖLÜM 1/3 • KALITIM SÖZLÜĞÜ',
-                        title: 'Baskın, Çekinik, Saf ve Melez Döl 🌿',
-                        summary: 'Mendel\'in bezelye deneylerindeki terimleri bilirsen tüm soruları 10 saniyede çözersin:',
-                        points: [
-                            { icon: '👑', title: 'Baskın (Dominant) vs Çekinik (Resesif) Gen', desc: 'Baskın gen BÜYÜK harfle (A, U, M) gösterilir, tek başına bile olsa sözünü geçirir! Çekinik gen KÜÇÜK harfle (a, u, m) gösterilir; SADECE ikisi de küçük olunca (aa) dış görünüşte ortaya çıkar!' },
-                            { icon: '💎', title: 'Saf (Arı / Homozigot) Döl: AA veya aa', desc: 'Anne ve babadan gelen harflerin İKİSİ DE AYNIYSA saf döldür. (AA = Saf Baskın, aa = Saf Çekinik).' },
-                            { icon: '⚡', title: 'Melez (Heterozigot) Döl: Aa', desc: 'Biri büyük biri küçük harfse (Aa) melez döldür. Dış görünüşte BÜYÜK harfin (Baskın) özelliği görülür!' },
-                            { icon: '👀', title: 'Genotip vs Fenotip', desc: 'Genotip = Harf kodudur (AA, Aa, aa). Fenotip = Dış görünüştür (Mor çiçek, Beyaz çiçek).' }
-                        ],
-                        trap: 'BEZELYE ŞİFRESİ: Bezelyelerde Mor çiçek (M) > Beyaz çiçek (m), Sarı tohum (S) > Yeşil tohum (s), Uzun boy (U) > Kısa boy (u) BASKINDIR!',
-                        buttonText: 'Kavramlar Tamam! Soruya Geç ⚡'
-                    },
-                    // ADIM 2: SORU 1
-                    {
-                        type: 'quiz',
-                        question: 'Bezelyelerde Mor çiçek geni (M), Beyaz çiçek genine (m) baskındır. Buna göre "Beyaz çiçekli" bir bezelyenin genotipi aşağıdakilerden hangisi olmak ZORUNDADIR?',
-                        options: [
-                            'MM (Saf Baskın)',
-                            'Mm (Melez Döl)',
-                            'mm (Saf Çekinik)',
-                            'Hem Mm hem de mm olabilir'
-                        ],
-                        correct: 2,
-                        explanation: 'Süpersin! Beyaz çiçek çekinik (küçük m) olduğu için dış görünüşte ortaya çıkmasının TEK YOLU iki genin de küçük harf (mm - Saf Çekinik) olmasıdır!'
-                    },
-                    // ADIM 3: KONU 2 (İNTERAKTİF ÇAPRAZLAMA SİMÜLATÖRÜ)
-                    {
-                        type: 'learn',
-                        tag: 'BÖLÜM 2/3 • CANLI SİMÜLATÖR',
-                        title: 'İnteraktif Çaprazlama Makinesi 🧬',
-                        summary: 'Aşağıdaki butonlardan 1. Ata ve 2. Ata\'nın genotiplerini seç, yavruların yüzdelerini canlı gör! Özellikle "Aa x Aa" ve "Aa x aa" kombinasyonlarını mutlaka dene:',
-                        widget: 'punnettSimulator',
-                        points: [
-                            { icon: '🔥', title: 'Klasik Sınav Sorusu 1: İki Melez (Aa x Aa)', desc: 'Sonuçlar: AA, Aa, Aa, aa ➔ %75 Baskın dış görünüş (Fenotip), %25 Çekinik dış görünüş (aa) çıkar!' },
-                            { icon: '⚖️', title: 'Klasik Sınav Sorusu 2: Melez x Saf Çekinik (Aa x aa)', desc: 'Sonuçlar: Aa, Aa, aa, aa ➔ %50 Baskın (Melez), %50 Çekinik çıkar!' }
-                        ],
-                        trap: 'TERSTEN SORU TAKTİĞİ: "İki mor çiçekli bezelye çaprazlandığında beyaz çiçekli (mm) yavru oluşuyor" diyorsa, anne ve babanın ikisi de KESİNLİKLE MELEZDİR (Mm x Mm)!',
-                        buttonText: 'Çaprazlamayı Çözdüm! Sorulara Geç 🚀'
-                    },
-                    // ADIM 4: SORU 2
-                    {
-                        type: 'quiz',
-                        question: 'Melez sarı tohumlu iki bezelyenin (Ss x Ss) çaprazlanması sonucunda oluşacak bezelyelerle ilgili hangisi DOĞRUDUR? (Sarı tohum S, yeşil tohuma s baskındır)',
-                        options: [
-                            '%100 sarı tohumlu bezelye oluşur.',
-                            '%75 sarı tohumlu, %25 yeşil tohumlu bezelye oluşma ihtimali vardır.',
-                            '%50 saf döl yeşil, %50 melez sarı oluşur.',
-                            'Hiçbir zaman saf döl sarı (SS) oluşamaz.'
-                        ],
-                        correct: 1,
-                        explanation: 'Harikasın! İki melez (Ss x Ss) çaprazlandığında SS, Ss, Ss (3 tanesi Sarı = %75) ve ss (1 tanesi Yeşil = %25) ihtimali ortaya çıkar!'
-                    },
-                    // ADIM 5: SORU 3
-                    {
-                        type: 'quiz',
-                        question: 'Uzun boylu iki bezelye çaprazlandığında oluşan yavruların bir kısmının KISA boylu (uu) olduğu görülüyor. Buna göre çaprazlanan ata bezelyelerin genotipi nedir?',
-                        options: [
-                            'UU x UU',
-                            'UU x Uu',
-                            'Uu x Uu',
-                            'uu x uu'
-                        ],
-                        correct: 2,
-                        explanation: 'Altın kuralı yakaladın! Uzun boylu iki atadan çekinik (uu - kısa) yavru çıkması için hem annede hem babada gizli birer küçük "u" olmalı, yani ikisi de MELEZ (Uu x Uu) olmalıdır!'
-                    },
-                    // ADIM 6: KONU 3 (CİNSİYET VE AKRABA EVLİLİĞİ)
-                    {
-                        type: 'learn',
-                        tag: 'BÖLÜM 3/3 • CİNSİYET & AKRABA EVLİLİĞİ',
-                        title: 'Cinsiyet Kalıtımı ve Akraba Evliliği 👶',
-                        summary: 'İnsanda 46 kromozomun 44\'ü vücut, 2 tanesi ise eşey (cinsiyet) kromozomudur:',
-                        points: [
-                            { icon: '👩', title: 'Dişi (Kadın): 44 + XX | Erkek: 44 + XY', desc: 'Anneden çocuğa her zaman X kromozomu geçer. Babadan ise X veya Y geçer. Yani doğacak bebeğin cinsiyetini BABADAN gelen kromozom belirler!' },
-                            { icon: '🎲', title: 'Her Doğumda İhtimal %50 (1/2)\'dir!', desc: 'Bir ailenin art arda 5 tane erkek çocuğu olsa bile, 6. çocuğun kız veya erkek olma ihtimali yine %50 (1/2)\'dir!' },
-                            { icon: '⚠️', title: 'Akraba Evliliğinin Zararı', desc: 'Kalıtsal hastalıklar genelde çekinik genlerle (a) taşınır. Akraba evliliğinde iki melez taşıyıcının (Aa x Aa) evlenme riski arttığı için çocuğun hasta (aa) doğma ihtimali çok yükselir!' }
-                        ],
-                        trap: 'DİKKAT: "Akraba evliliği yapan çiftlerin bütün çocukları kesinlikle hasta doğar" derse YANLIŞ! Kesin değil, hastalık ortaya çıkma İHTİMALİ (RİSKİ) artar!',
-                        buttonText: 'Tamam! Son Sorularla Üniteyi Bitir 🏆'
-                    },
-                    // ADIM 7: SORU 4
-                    {
-                        type: 'quiz',
-                        question: 'Dört tane kız çocuğu olan bir ailenin 5. çocuklarının ERKEK olma ihtimali yüzde kaçtır?',
-                        options: [
-                            '%25',
-                            '%50',
-                            '%75',
-                            '%100'
-                        ],
-                        correct: 1,
-                        explanation: 'Tuzağa düşmedin! Önceki çocukların cinsiyeti ne olursa olsun, her yeni doğumda kız veya erkek olma ihtimali DAİMA %50 (1/2)\'dir!'
-                    },
-                    // ADIM 8: SORU 5
-                    {
-                        type: 'quiz',
-                        question: 'Sağlıklı görünen ancak çekinik bir hastalık genini taşıyan (Taşıyıcı: Aa) anne ve babanın doğacak çocuklarının HASTA (aa) olma ihtimali yüzde kaçtır?',
-                        options: [
-                            '%0',
-                            '%25',
-                            '%50',
-                            '%100'
-                        ],
-                        correct: 1,
-                        explanation: 'Süper! İki taşıyıcı melez (Aa x Aa) çaprazlandığında AA (%25 Sağlıklı), Aa (%50 Taşıyıcı Sağlıklı) ve aa (%25 Hasta) ihtimali oluşur!'
-                    },
-                    // ADIM 9: SORU 6
-                    {
-                        type: 'quiz',
-                        question: 'İnsanda doğacak bebeğin cinsiyetini belirleyen durum aşağıdakilerden hangisidir?',
-                        options: [
-                            'Anneden gelen X kromozomu',
-                            'Babadan gelen X veya Y kromozomu',
-                            'Vücut kromozomlarının sayısı',
-                            'Önceki kardeşlerin cinsiyeti'
-                        ],
-                        correct: 1,
-                        explanation: 'Tebrikler! Anne sadece X verebilir; baba ise X verirse kız (XX), Y verirse erkek (XY) olur. Yani cinsiyeti babadan gelen gonozom belirler!'
-                    }
-                ]
-            },
-
-            // ==========================================================
-            // BOSS MODU: 1. DÖNEM 1. YAZILI PROVA SINAVI (12 SORU - 100 PUANLIK KARNE)
-            // ==========================================================
-            {
-                id: 'yazili_boss',
-                title: '🏆 1. Dönem 1. Yazılı Boss Sınavı',
-                shortTitle: '🏆 1. Yazılı Sınav Provası',
-                subtitle: 'Tüm Ünitelerden Karma 10 Hızlı Yazılı Sorusu + 100 Üzerinden Not Hesaplama!',
-                badge: '100 Puanlık Sınav',
-                color: 'from-amber-500 via-orange-500 to-rose-600',
-                icon: '🏆',
-                steps: [
-                    {
-                        type: 'learn',
-                        tag: 'YAZILI PROVASINA HOŞ GELDİN!',
-                        title: 'Hazırsan 100 Almaya Başlıyoruz! 🔥',
-                        summary: 'Bu modda arka arkaya 10 adet gerçek yazılı sorusu çözeceksin. Her soru sınavda 10 puan değerindedir. Sonunda resmi Yazılı Notun (0 - 100) hesaplanacak!',
-                        points: [
-                            { icon: '🎯', title: 'Soru Dağılımı', desc: 'Mevsimler ve İklim + DNA ve Genetik Kod + Kalıtım (Çaprazlama) konularından karma sorular.' },
-                            { icon: '💡', title: 'İpucu', desc: 'Takılırsan sağ üstteki ⚡ Şimşek butonuna basıp kopya özeti açabilirsin!' }
-                        ],
-                        trap: 'Kanka acele etme, özellikle "DEĞİLDİR / YANLIŞTIR" kelimelerine dikkat et. Başarılar!',
-                        buttonText: 'Yazılıyı Başlat! 100 Alacağım 🚀'
-                    },
-                    {
-                        type: 'quiz',
-                        question: '[YAZILI SORU 1/10] 21 Haziran tarihinde Kuzey Yarım Küre\'den Güney Yarım Küre\'ye doğru uçakla giden bir kişi için hangisi doğrudur?',
-                        options: [
-                            'Yaz mevsiminden kış mevsimine doğru gitmektedir.',
-                            'Gittiği yerde gündüz süresi daha uzundur.',
-                            'Kış mevsiminden yaz mevsimine doğru gitmektedir.',
-                            'Gittiği yerde birim yüzeye düşen ısı enerjisi daha fazladır.'
-                        ],
-                        correct: 0,
-                        explanation: '21 Haziran\'da Kuzey Yarım Küre YAZ, Güney Yarım Küre KIŞ yaşar. Kuzeyden güneye giden biri yazdan kışa gider!'
-                    },
-                    {
-                        type: 'quiz',
-                        question: '[YAZILI SORU 2/10] Deniz kenarında gündüzleri Karadan Denize mi, Denizden Karaya mı rüzgar eser? (İpucu: Gündüzleri karalar çabuk ısınır, denizler daha serindir)',
-                        options: [
-                            'Karalar sıcak olduğu için Karadan Denize eser.',
-                            'Deniz daha serin (Yüksek Basınç) olduğu için Denizden Karaya doğru eser.',
-                            'Gündüzleri rüzgar hiç esmez.',
-                            'Alçak basınçtan yüksek basınca doğru eser.'
-                        ],
-                        correct: 1,
-                        explanation: 'Süper mantık! Gündüz deniz daha soğuktur (Yüksek Basınç), kara daha sıcaktır (Alçak Basınç). Rüzgar Soğuktan Sıcağa (Denizden Karaya) eser!'
-                    },
-                    {
-                        type: 'quiz',
-                        question: '[YAZILI SORU 3/10] "İklim ve Hava Olayları" karşılaştırmasında aşağıdakilerden hangisi YANLIŞTIR?',
-                        options: [
-                            'İklim geniş bölgelerde, hava olayları dar bölgelerde etkilidir.',
-                            'İklim kesinlik bildirir, hava olayları tahminidir.',
-                            'İklimi inceleyen bilim dalına Meteoroloji denir.',
-                            'Hava olayları gün içinde bile birkaç kez değişebilir.'
-                        ],
-                        correct: 2,
-                        explanation: 'İklimi inceleyen bilim dalı KLİMATOLOJİ\'dir; Meteoroloji ise hava olaylarını inceler!'
-                    },
-                    {
-                        type: 'quiz',
-                        question: '[YAZILI SORU 4/10] Bir DNA molekülünde bulunan toplam Fosfat sayısı bilinirse, aşağıdakilerden hangisi BİLİNEMEZ?',
-                        options: [
-                            'Toplam nükleotid sayısı',
-                            'Toplam deoksiriboz şekeri sayısı',
-                            'Toplam organik baz sayısı',
-                            'Adenin nükleotidi sayısı'
-                        ],
-                        correct: 3,
-                        explanation: 'Toplam fosfat = Toplam şeker = Toplam nükleotid = Toplam organik bazdır. Ancak sadece toplam sayıdan kaç tanesinin Adenin olduğu bilinemez!'
-                    },
-                    {
-                        type: 'quiz',
-                        question: '[YAZILI SORU 5/10] Bir DNA zincirinin 1. ipliğindeki dizilim "A - T - G - C - A" şeklindeyse, bunun karşısındaki 2. ipliğin dizilimi nasıldır?',
-                        options: [
-                            'A - T - G - C - A',
-                            'T - A - C - G - T',
-                            'G - C - A - T - G',
-                            'T - A - G - C - T'
-                        ],
-                        correct: 1,
-                        explanation: 'A karşısına T, T karşısına A, G karşısına C, C karşısına G gelir. Yani: T - A - C - G - T!'
-                    },
-                    {
-                        type: 'quiz',
-                        question: '[YAZILI SORU 6/10] DNA\'nın görev birimi (saç rengi, kan grubu gibi karakterleri belirleyen bölge) aşağıdakilerden hangisidir?',
-                        options: [
-                            'Nükleotid',
-                            'Gen',
-                            'Fosfat',
-                            'Deoksiriboz'
-                        ],
-                        correct: 1,
-                        explanation: 'DNA\'nın GÖREV birimi GEN\'dir; YAPI birimi ise Nükleotiddir!'
-                    },
-                    {
-                        type: 'quiz',
-                        question: '[YAZILI SORU 7/10] "Homozigot (Saf) baskın" bir bezelye ile "Homozigot çekinik" bir bezelyenin (AA x aa) çaprazlanması sonucu 1. kuşakta oluşan yavruların tamamı nasıldır?',
-                        options: [
-                            '%100 Saf Baskın (AA)',
-                            '%100 Melez Baskın (Aa)',
-                            '%50 Baskın, %50 Çekinik',
-                            '%100 Saf Çekinik (aa)'
-                        ],
-                        correct: 1,
-                        explanation: 'AA ile aa çaprazlandığında birinden hep A, diğerinden hep a gelir. Tüm yavrular %100 Aa (Melez Baskın) olur!'
-                    },
-                    {
-                        type: 'quiz',
-                        question: '[YAZILI SORU 8/10] Melez mor çiçekli bezelye (Mm) ile Beyaz çiçekli bezelye (mm) çaprazlanırsa beyaz çiçekli bezelye oluşma ihtimali yüzde kaçtır?',
-                        options: [
-                            '%0',
-                            '%25',
-                            '%50',
-                            '%75'
-                        ],
-                        correct: 2,
-                        explanation: 'Mm x mm çaprazlamasından Mm, Mm, mm, mm çıkar. Yani yarısı (%50) Mor, yarısı (%50) Beyaz çiçekli olur!'
-                    },
-                    {
-                        type: 'quiz',
-                        question: '[YAZILI SORU 9/10] Akraba evliliklerinin sakıncalı olmasının bilimsel sebebi aşağıdakilerden hangisidir?',
-                        options: [
-                            'Baskın genlerin bir araya gelmesini engellemesi',
-                            'Zararlı çekinik genlerin (aa) bir araya gelerek hasta çocuk doğma ihtimalini artırması',
-                            'Kromozom sayısını 46\'dan 48\'e çıkarması',
-                            'DNA\'nın eşlenmesini tamamen durdurması'
-                        ],
-                        correct: 1,
-                        explanation: 'Akraba olan bireylerin genetik yapısı benzer olduğu için hastalık taşıyan çekinik genlerin (aa) bir araya gelme riski çok yükselir!'
-                    },
-                    {
-                        type: 'quiz',
-                        question: '[YAZILI SORU 10/10] Sağlıklı bir erkek bireyin sperm ana hücresinde bulunan kromozom formülü aşağıdakilerden hangisidir?',
-                        options: [
-                            '44 + XX',
-                            '44 + XY',
-                            '22 + X',
-                            '46 + XY'
-                        ],
-                        correct: 1,
-                        explanation: 'Erkek bireyin 46 kromozomunun 44 tanesi vücut kromozomu, 2 tanesi eşey kromozomudur (XY). Toplam formül: 44 + XY (= 46)!'
-                    }
-                ]
-            }
-        ];
-
-        /**************************************************************
-         * 5. EKRAN YÖNETİMİ VE RENDER MOTORU
-         **************************************************************/
-        function goHome() {
-            playSound('click');
-            state.currentModuleId = null;
-            document.getElementById('moduleProgressWrapper').classList.add('hidden');
-            document.getElementById('bottomActionBar').classList.add('hidden');
-            renderHomeScreen();
-        }
-
-        function renderHomeScreen() {
-            const viewport = document.getElementById('mainViewport');
-            const completedCount = Object.keys(state.completedModules).length;
-
-            viewport.innerHTML = `
-                <div class="animate-pop space-y-3.5 py-1">
-                    <!-- Hero Banner -->
-                    <div class="relative overflow-hidden rounded-3xl p-4 bg-gradient-to-br from-indigo-900/90 via-purple-900/80 to-slate-900 border border-purple-500/40 shadow-xl">
-                        <div class="flex items-center justify-between gap-3">
-                            <div class="space-y-1">
-                                <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-extrabold bg-cyan-400/20 text-cyan-300 border border-cyan-400/30">
-                                    ⚡ 8. SINIF FEN 1. DÖNEM 1. YAZILI
-                                </span>
-                                <h1 class="font-display font-black text-xl sm:text-2xl text-white leading-tight">
-                                    Önce Öğren, <span class="text-cyan-400">Tamam</span> De, Soruları Çöz! 🚀
-                                </h1>
-                                <p class="text-xs text-slate-300 leading-relaxed">
-                                    Kanka her ünitede önce sana şifrelerle konuyu anlatacağım, <b>"Anladım, Tamam!"</b> dediğinde soru sorup puan vereceğim!
-                                </p>
-                            </div>
-                            <div class="text-4xl sm:text-5xl animate-float shrink-0">
-                                🧬
-                            </div>
-                        </div>
-
-                        <!-- Mini Stats Strip -->
-                        <div class="grid grid-cols-3 gap-2 mt-3.5 pt-3 border-t border-white/10 text-center">
-                            <div class="bg-slate-900/60 rounded-xl p-1.5">
-                                <div class="text-[10px] text-slate-400">Toplam Puan</div>
-                                <div class="font-display font-extrabold text-sm text-amber-300">⭐ ${state.score}</div>
-                            </div>
-                            <div class="bg-slate-900/60 rounded-xl p-1.5">
-                                <div class="text-[10px] text-slate-400">En İyi Seri</div>
-                                <div class="font-display font-extrabold text-sm text-orange-400">🔥 ${state.bestStreak}</div>
-                            </div>
-                            <div class="bg-slate-900/60 rounded-xl p-1.5">
-                                <div class="text-[10px] text-slate-400">Bitirilen Modül</div>
-                                <div class="font-display font-extrabold text-sm text-emerald-400">✅ ${completedCount}/4</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Section Header -->
-                    <div class="flex items-center justify-between px-1">
-                        <h2 class="font-display font-extrabold text-sm text-slate-200 uppercase tracking-wider flex items-center gap-1.5">
-                            <i class="fa-solid fa-gamepad text-cyan-400"></i> Çalışmak İstediğin Üniteyi Seç:
-                        </h2>
-                        <button onclick="openCheatSheet()" class="text-xs font-bold text-purple-300 hover:text-purple-200 flex items-center gap-1">
-                            <i class="fa-solid fa-bolt"></i> Hızlı Şifreler
-                        </button>
-                    </div>
-
-                    <!-- Module Cards -->
-                    <div class="space-y-2.5">
-                        ${MODULES.map((mod) => {
-                            const isDone = state.completedModules[mod.id];
-                            return `
-                            <div onclick="startModule('${mod.id}')" class="glass-card rounded-2xl p-3.5 border ${isDone ? 'border-emerald-500/50' : 'border-slate-700/80'} hover:border-cyan-400/60 transition cursor-pointer active:scale-[0.99] relative overflow-hidden group">
-                                <div class="flex items-center gap-3.5">
-                                    <div class="w-13 h-13 sm:w-14 sm:h-14 rounded-2xl bg-gradient-to-br ${mod.color} flex items-center justify-center text-2xl sm:text-3xl shadow-lg shrink-0">
-                                        ${mod.icon}
-                                    </div>
-                                    <div class="flex-1 min-w-0">
-                                        <div class="flex items-center gap-2">
-                                            <span class="text-[10px] font-extrabold px-2 py-0.5 rounded-full bg-white/10 text-cyan-300">${mod.badge}</span>
-                                            ${isDone ? '<span class="text-[10px] font-extrabold px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/40">✔ Tamamlandı</span>' : ''}
-                                        </div>
-                                        <h3 class="font-display font-extrabold text-base text-white mt-1 truncate">${mod.title}</h3>
-                                        <p class="text-xs text-slate-400 line-clamp-1">${mod.subtitle}</p>
-                                    </div>
-                                    <div class="w-9 h-9 rounded-xl bg-slate-800 group-hover:bg-cyan-500 group-hover:text-slate-950 text-cyan-400 flex items-center justify-center transition shrink-0">
-                                        <i class="fa-solid fa-play text-xs"></i>
-                                    </div>
-                                </div>
-                            </div>
-                            `;
-                        }).join('')}
-                    </div>
-
-                    <!-- Offline Download Reminder Card -->
-                    <div class="rounded-2xl p-3 bg-emerald-950/40 border border-emerald-500/30 flex items-center justify-between gap-3">
-                        <div class="text-xs text-emerald-200">
-                            <span class="font-bold">📱 Telefonuna Kaydet:</span> İnternetin yokken bile tam ekran çalışmak için dosyayı indir!
-                        </div>
-                        <button onclick="downloadThisApp()" class="shrink-0 px-3 py-2 rounded-xl bg-emerald-500 text-slate-950 font-display font-extrabold text-xs btn-3d">
-                            📥 HTML İndir
-                        </button>
-                    </div>
-                </div>
-            `;
-        }
-
-        /**************************************************************
-         * 6. MODÜL İÇİ ADIM ADIM (ÖĞRET -> SORU SOR) AKIŞI
-         **************************************************************/
-        function startModule(moduleId) {
-            playSound('click');
-            state.currentModuleId = moduleId;
-            state.currentStepIndex = 0;
-            state.moduleCorrectCount = 0;
-            state.moduleQuestionCount = 0;
-
-            document.getElementById('moduleProgressWrapper').classList.remove('hidden');
-            document.getElementById('bottomActionBar').classList.remove('hidden');
-            renderCurrentStep();
-        }
-
-        function getCurrentModule() {
-            return MODULES.find((m) => m.id === state.currentModuleId);
-        }
-
-        function renderCurrentStep() {
-            const mod = getCurrentModule();
-            if (!mod) return;
-
-            const step = mod.steps[state.currentStepIndex];
-            const totalSteps = mod.steps.length;
-            const pct = Math.round(((state.currentStepIndex + 1) / totalSteps) * 100);
-
-            document.getElementById('currentModuleName').textContent = mod.shortTitle;
-            document.getElementById('stepCounterText').textContent = `Adım ${state.currentStepIndex + 1} / ${totalSteps}`;
-            document.getElementById('moduleProgressBar').style.width = pct + '%';
-
-            const prevBtn = document.getElementById('prevStepBtn');
-            prevBtn.style.display = state.currentStepIndex > 0 ? 'flex' : 'none';
-
-            const viewport = document.getElementById('mainViewport');
-            viewport.scrollTop = 0;
-
-            if (step.type === 'learn') {
-                state.questionAnswered = true;
-                setMainActionButton(step.buttonText || 'Anladım, Tamam! Soruya Geç ⚡', true, 'from-cyan-500 via-blue-600 to-purple-600');
-                renderLearnCard(step);
-            } else if (step.type === 'quiz') {
-                state.questionAnswered = false;
-                setMainActionButton('Önce Yukarıdan Bir Şık Seç 👆', false, 'from-slate-700 to-slate-800');
-                renderQuizCard(step);
-            }
-        }
-
-        function setMainActionButton(text, enabled, gradientClasses) {
-            const btn = document.getElementById('mainActionBtn');
-            const txt = document.getElementById('mainActionText');
-            txt.textContent = text;
-            btn.disabled = !enabled;
-            btn.className = `flex-1 py-3 px-4 rounded-xl bg-gradient-to-r ${gradientClasses} text-white font-display font-extrabold text-sm sm:text-base tracking-wide btn-3d flex items-center justify-center gap-2 ${enabled ? 'opacity-100 cursor-pointer' : 'opacity-50 cursor-not-allowed'}`;
-        }
-
-        /**************************************************************
-         * 7. KONU ANLATIM KARTI & İNTERAKTİF MİNİ-SİMÜLATÖRLER
-         **************************************************************/
-        function renderLearnCard(step) {
-            const viewport = document.getElementById('mainViewport');
-
-            let widgetHTML = '';
-            if (step.widget === 'seasonInteractive') {
-                widgetHTML = getSeasonWidgetHTML();
-            } else if (step.widget === 'pressureDiagram') {
-                widgetHTML = getPressureWidgetHTML();
-            } else if (step.widget === 'kedigeniWidget') {
-                widgetHTML = getKedigeniWidgetHTML();
-            } else if (step.widget === 'dnaRepairWidget') {
-                widgetHTML = getDnaRepairWidgetHTML();
-            } else if (step.widget === 'punnettSimulator') {
-                widgetHTML = getPunnettWidgetHTML();
-            }
-
-            viewport.innerHTML = `
-                <div class="animate-pop space-y-3 py-1">
-                    <div class="glass-card rounded-3xl p-4 border border-cyan-500/30 shadow-xl space-y-3">
-                        <!-- Badge -->
-                        <div class="flex items-center justify-between">
-                            <span class="px-2.5 py-1 rounded-full text-[10px] font-extrabold bg-cyan-500/20 text-cyan-300 border border-cyan-500/30">
-                                📚 KONU ANLATIMI • ${step.tag}
-                            </span>
-                            <span class="text-xs text-slate-400 font-semibold">Oku & Dokun 👇</span>
-                        </div>
-
-                        <!-- Title & Summary -->
-                        <h2 class="font-display font-black text-lg sm:text-xl text-white leading-snug">
-                            ${step.title}
-                        </h2>
-                        <p class="text-xs sm:text-sm text-slate-200 leading-relaxed">
-                            ${step.summary}
-                        </p>
-
-                        <!-- Optional Interactive Widget -->
-                        ${widgetHTML}
-
-                        <!-- Bullet Cards -->
-                        <div class="space-y-2 pt-1">
-                            ${step.points.map((pt) => `
-                                <div class="p-3 rounded-2xl bg-slate-900/80 border border-slate-700/80 flex items-start gap-3">
-                                    <div class="w-9 h-9 rounded-xl bg-slate-800 flex items-center justify-center text-lg shrink-0">
-                                        ${pt.icon}
-                                    </div>
-                                    <div>
-                                        <div class="font-display font-bold text-xs sm:text-sm text-cyan-300">${pt.title}</div>
-                                        <div class="text-xs text-slate-300 leading-relaxed mt-0.5">${pt.desc}</div>
-                                    </div>
-                                </div>
-                            `).join('')}
-                        </div>
-
-                        <!-- Exam Trap Warning -->
-                        <div class="p-3 rounded-2xl bg-rose-500/15 border border-rose-500/40 flex items-start gap-2.5">
-                            <span class="text-lg shrink-0">⚠️</span>
-                            <div class="text-xs text-rose-200 leading-relaxed font-medium">
-                                ${step.trap}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            `;
-        }
-
-        // --- WIDGET 1: 4 KRİTİK TARİH İNTERAKTİF SEÇİCİ ---
-        function getSeasonWidgetHTML() {
-            const data = {
-                '21haz': {
-                    title: '21 Haziran (Gün Dönümü)',
-                    kyk: '☀️ YAZ Başlar (En Uzun Gündüz)',
-                    gyk: '❄️ KIŞ Başlar (En Uzun Gece)',
-                    dik: '🎯 Işınlar YENGEÇ Dönencesi\'ne (KYK) dik düşer!',
-                    golge: '📏 Türkiye\'de gölge boyu EN KISA!'
-                },
-                '21ara': {
-                    title: '21 Aralık (Gün Dönümü)',
-                    kyk: '❄️ KIŞ Başlar (En Uzun Gece)',
-                    gyk: '☀️ YAZ Başlar (En Uzun Gündüz)',
-                    dik: '🎯 Işınlar OĞLAK Dönencesi\'ne (GYK) dik düşer!',
-                    golge: '📏 Türkiye\'de gölge boyu EN UZUN!'
-                },
-                '21mar': {
-                    title: '21 Mart (Ekinoks)',
-                    kyk: '🌸 İLKBAHAR Başlar',
-                    gyk: '🍂 SONBAHAR Başlar',
-                    dik: '🎯 Işınlar EKVATOR\'a dik düşer!',
-                    golge: '⚖️ Tüm Dünya\'da 12 saat gece = 12 saat gündüz!'
-                },
-                '23eyl': {
-                    title: '23 Eylül (Ekinoks)',
-                    kyk: '🍂 SONBAHAR Başlar',
-                    gyk: '🌸 İLKBAHAR Başlar',
-                    dik: '🎯 Işınlar EKVATOR\'a dik düşer!',
-                    golge: '⚖️ Tüm Dünya\'da 12 saat gece = 12 saat gündüz!'
-                }
-            };
-            const cur = data[state.selectedSeasonDate];
-
-            return `
-                <div class="p-3 rounded-2xl bg-indigo-950/50 border border-indigo-500/40 space-y-2.5">
-                    <div class="text-[11px] font-bold text-indigo-300 flex items-center justify-between">
-                        <span>🕹️ İNTERAKTİF TARİH SİMÜLATÖRÜ:</span>
-                        <span class="text-cyan-300">Tarihe Dokun!</span>
-                    </div>
-                    <div class="grid grid-cols-4 gap-1.5">
-                        ${[
-                            { id: '21haz', label: '21 Haz' },
-                            { id: '21ara', label: '21 Ara' },
-                            { id: '21mar', label: '21 Mar' },
-                            { id: '23eyl', label: '23 Eyl' }
-                        ].map((btn) => `
-                            <button onclick="selectSeasonDate('${btn.id}')" class="py-1.5 px-2 rounded-xl font-display font-bold text-xs transition ${state.selectedSeasonDate === btn.id ? 'bg-cyan-400 text-slate-950 shadow-md scale-105' : 'bg-slate-800 text-slate-300'}">
-                                ${btn.label}
-                            </button>
-                        `).join('')}
-                    </div>
-                    <div class="p-2.5 rounded-xl bg-slate-900/90 border border-slate-700 space-y-1 text-xs">
-                        <div class="font-extrabold text-amber-300">${cur.title}</div>
-                        <div class="flex justify-between"><span class="text-slate-400">Kuzey Y.K (Türkiye):</span> <span class="font-bold text-cyan-300">${cur.kyk}</span></div>
-                        <div class="flex justify-between"><span class="text-slate-400">Güney Y.K:</span> <span class="font-bold text-purple-300">${cur.gyk}</span></div>
-                        <div class="text-emerald-300 font-semibold pt-1 border-t border-slate-800">${cur.dik}</div>
-                        <div class="text-amber-200 font-semibold">${cur.golge}</div>
-                    </div>
-                </div>
-            `;
-        }
-
-        function selectSeasonDate(id) {
-            playSound('click');
-            state.selectedSeasonDate = id;
-            renderCurrentStep();
-        }
-
-        // --- WIDGET 2: BASINÇ VE RÜZGAR GÖRSEL ŞEMASI ---
-        function getPressureWidgetHTML() {
-            return `
-                <div class="p-3 rounded-2xl bg-slate-900/95 border border-cyan-500/30">
-                    <div class="grid grid-cols-3 items-center gap-2 text-center">
-                        <div class="p-2 rounded-xl bg-blue-500/15 border border-blue-400/40">
-                            <div class="text-xl">☀️🥶</div>
-                            <div class="font-display font-extrabold text-xs text-blue-300 mt-1">YÜKSEK BASINÇ</div>
-                            <div class="text-[10px] text-slate-300">Soğuk • Alçalıcı Hava • Bulut Yok</div>
-                        </div>
-                        <div class="flex flex-col items-center justify-center">
-                            <span class="text-[10px] font-extrabold text-amber-300 uppercase">RÜZGAR YÖNÜ</span>
-                            <div class="text-2xl text-cyan-400 animate-pulse my-0.5">
-                                <i class="fa-solid fa-wind"></i> ➔
-                            </div>
-                            <span class="text-[10px] font-bold text-emerald-400">Her Zaman YB ➔ AB</span>
-                        </div>
-                        <div class="p-2 rounded-xl bg-rose-500/15 border border-rose-400/40">
-                            <div class="text-xl">🌧️🥵</div>
-                            <div class="font-display font-extrabold text-xs text-rose-300 mt-1">ALÇAK BASINÇ</div>
-                            <div class="text-[10px] text-slate-300">Sıcak • Yükselici Hava • Yağışlı</div>
-                        </div>
-                    </div>
-                </div>
-            `;
-        }
-
-        // --- WIDGET 3: KEDİGENİ GÖRSEL SIRALAMA ---
-        function getKedigeniWidgetHTML() {
-            return `
-                <div class="p-3 rounded-2xl bg-purple-950/40 border border-purple-500/40">
-                    <div class="text-[11px] font-bold text-purple-300 mb-2 text-center">
-                        🐱 BÜYÜKTEN KÜÇÜĞE ŞİFRE: <span class="text-amber-300 font-extrabold">Ke - Di - Ge - Ni</span>
-                    </div>
-                    <div class="flex items-center justify-between gap-1 text-center">
-                        <div class="flex-1 p-2 rounded-xl bg-purple-600/30 border border-purple-400">
-                            <div class="font-display font-black text-sm text-amber-300">Ke</div>
-                            <div class="text-[10px] font-bold text-white">Kromozom</div>
-                        </div>
-                        <span class="font-bold text-cyan-400">></span>
-                        <div class="flex-1 p-2 rounded-xl bg-purple-600/25 border border-purple-400/70">
-                            <div class="font-display font-black text-sm text-amber-300">Di</div>
-                            <div class="text-[10px] font-bold text-white">DNA</div>
-                        </div>
-                        <span class="font-bold text-cyan-400">></span>
-                        <div class="flex-1 p-2 rounded-xl bg-purple-600/20 border border-purple-400/50">
-                            <div class="font-display font-black text-sm text-amber-300">Ge</div>
-                            <div class="text-[10px] font-bold text-white">Gen</div>
-                        </div>
-                        <span class="font-bold text-cyan-400">></span>
-                        <div class="flex-1 p-2 rounded-xl bg-purple-600/15 border border-purple-400/40">
-                            <div class="font-display font-black text-sm text-amber-300">Ni</div>
-                            <div class="text-[10px] font-bold text-white">Nükleotid</div>
-                        </div>
-                    </div>
-                </div>
-            `;
-        }
-
-        // --- WIDGET 4: DNA ONARIM TEST LABORATUVARI ---
-        function getDnaRepairWidgetHTML() {
-            const isRep = state.selectedDnaCase === 'repairable';
-            return `
-                <div class="p-3 rounded-2xl bg-slate-900 border border-purple-500/40 space-y-2.5">
-                    <div class="flex items-center justify-between text-[11px] font-bold">
-                        <span class="text-purple-300">🧬 DNA HATA TEST LABORATUVARI:</span>
-                        <span class="text-cyan-300">Durum Seç!</span>
-                    </div>
-                    <div class="grid grid-cols-2 gap-2">
-                        <button onclick="selectDnaCase('repairable')" class="py-1.5 px-2 rounded-xl font-bold text-xs transition ${isRep ? 'bg-emerald-500 text-slate-950' : 'bg-slate-800 text-slate-300'}">
-                            1. Tek Zincir Boş
-                        </button>
-                        <button onclick="selectDnaCase('unrepairable')" class="py-1.5 px-2 rounded-xl font-bold text-xs transition ${!isRep ? 'bg-rose-500 text-white' : 'bg-slate-800 text-slate-300'}">
-                            2. Karşılıklı İki Zincir Boş
-                        </button>
-                    </div>
-                    <div class="p-2.5 rounded-xl bg-slate-950 border ${isRep ? 'border-emerald-500/50' : 'border-rose-500/50'} text-center space-y-1.5">
-                        <div class="flex justify-center items-center gap-3 font-mono font-extrabold text-sm">
-                            <span class="px-2 py-1 rounded bg-slate-800 text-cyan-300">A = T</span>
-                            <span class="px-2 py-1 rounded ${isRep ? 'bg-amber-500/20 text-amber-300 border border-amber-400' : 'bg-rose-500/20 text-rose-300 border border-rose-400'}">
-                                ${isRep ? 'G ≡ [ ? ]' : '[ ? ] = [ ? ]'}
-                            </span>
-                            <span class="px-2 py-1 rounded bg-slate-800 text-cyan-300">T = A</span>
-                        </div>
-                        <div class="text-xs font-bold ${isRep ? 'text-emerald-400' : 'text-rose-400'}">
-                            ${isRep ? '✅ ONARILIR! Karşıda G olduğu için boşluğa C gelir.' : '❌ ONARILAMAZ! İki taraf da boş olduğu için hangi harfin geleceği bilinemez!'}
-                        </div>
-                    </div>
-                </div>
-            `;
-        }
-
-        function selectDnaCase(c) {
-            playSound('click');
-            state.selectedDnaCase = c;
-            renderCurrentStep();
-        }
-
-        // --- WIDGET 5: İNTERAKTİF ÇAPRAZLAMA MAKİNESİ (PUNNETT SQUARE) ---
-        function getPunnettWidgetHTML() {
-            const p1 = state.parent1Genotype;
-            const p2 = state.parent2Genotype;
-
-            const alleles1 = p1.split('');
-            const alleles2 = p2.split('');
-
-            const children = [];
-            for (let a of alleles1) {
-                for (let b of alleles2) {
-                    // Format so capital letter always comes first (e.g. aA -> Aa)
-                    const pair = (a === 'A' || b === 'A')
-                        ? (a === 'A' && b === 'A' ? 'AA' : 'Aa')
-                        : 'aa';
-                    children.push(pair);
-                }
-            }
-
-            const dominantCount = children.filter((c) => c.includes('A')).length;
-            const recessiveCount = 4 - dominantCount;
-            const domPct = dominantCount * 25;
-            const recPct = recessiveCount * 25;
-
-            const pureCount = children.filter((c) => c === 'AA' || c === 'aa').length;
-            const hybridCount = 4 - pureCount;
-
-            return `
-                <div class="p-3 rounded-2xl bg-emerald-950/40 border border-emerald-500/40 space-y-2.5">
-                    <div class="text-[11px] font-bold text-emerald-300 flex items-center justify-between">
-                        <span>🧪 CANLI ÇAPRAZLAMA MAKİNESİ:</span>
-                        <span class="text-amber-300">Anne & Baba Seç!</span>
-                    </div>
-
-                    <!-- Parent Selectors -->
-                    <div class="grid grid-cols-2 gap-2">
-                        <div class="bg-slate-900/90 p-2 rounded-xl border border-slate-700 text-center">
-                            <div class="text-[10px] text-slate-400 mb-1">1. Ata (Anne)</div>
-                            <div class="flex justify-center gap-1">
-                                ${['AA', 'Aa', 'aa'].map((g) => `
-                                    <button onclick="setParentGenotype(1, '${g}')" class="px-2.5 py-1 rounded-lg font-mono font-extrabold text-xs transition ${p1 === g ? 'bg-cyan-400 text-slate-950 scale-105' : 'bg-slate-800 text-slate-300'}">${g}</button>
-                                `).join('')}
-                            </div>
-                        </div>
-                        <div class="bg-slate-900/90 p-2 rounded-xl border border-slate-700 text-center">
-                            <div class="text-[10px] text-slate-400 mb-1">2. Ata (Baba)</div>
-                            <div class="flex justify-center gap-1">
-                                ${['AA', 'Aa', 'aa'].map((g) => `
-                                    <button onclick="setParentGenotype(2, '${g}')" class="px-2.5 py-1 rounded-lg font-mono font-extrabold text-xs transition ${p2 === g ? 'bg-purple-400 text-slate-950 scale-105' : 'bg-slate-800 text-slate-300'}">${g}</button>
-                                `).join('')}
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 4 Offspring Boxes -->
-                    <div class="grid grid-cols-4 gap-1.5 text-center">
-                        ${children.map((ch) => {
-                            const isDom = ch.includes('A');
-                            return `
-                                <div class="p-2 rounded-xl border ${isDom ? 'bg-purple-500/20 border-purple-400/50 text-purple-200' : 'bg-slate-800 border-slate-600 text-slate-200'}">
-                                    <div class="font-mono font-black text-sm">${ch}</div>
-                                    <div class="text-[10px] font-bold">${isDom ? '🌸 Mor' : '🤍 Beyaz'}</div>
-                                </div>
-                            `;
-                        }).join('')}
-                    </div>
-
-                    <!-- Results Summary -->
-                    <div class="grid grid-cols-2 gap-2 text-[11px] bg-slate-900/90 p-2 rounded-xl border border-slate-800">
-                        <div>
-                            <span class="text-slate-400">Fenotip (Dış):</span>
-                            <div class="font-bold text-purple-300">%${domPct} Baskın, %${recPct} Çekinik</div>
-                        </div>
-                        <div>
-                            <span class="text-slate-400">Genotip (Kod):</span>
-                            <div class="font-bold text-cyan-300">%${pureCount * 25} Saf, %${hybridCount * 25} Melez</div>
-                        </div>
-                    </div>
-                </div>
-            `;
-        }
-
-        function setParentGenotype(parentNum, gen) {
-            playSound('click');
-            if (parentNum === 1) state.parent1Genotype = gen;
-            else state.parent2Genotype = gen;
-            renderCurrentStep();
-        }
-
-        /**************************************************************
-         * 8. SORU KARTI & ANINDA GERİ BİLDİRİM MOTORU
-         **************************************************************/
-        function renderQuizCard(step) {
-            const viewport = document.getElementById('mainViewport');
-            const letters = ['A', 'B', 'C', 'D'];
-
-            viewport.innerHTML = `
-                <div class="animate-pop space-y-3 py-1">
-                    <div class="glass-card rounded-3xl p-4 border border-purple-500/40 shadow-xl space-y-3.5">
-                        <!-- Top Question Pill -->
-                        <div class="flex items-center justify-between">
-                            <span class="px-3 py-1 rounded-full text-[11px] font-extrabold bg-amber-500/20 text-amber-300 border border-amber-500/40 flex items-center gap-1.5">
-                                ⚡ ŞİMDİ SORU ZAMANI! (+100 Puan)
-                            </span>
-                            <span class="text-xs font-bold text-orange-400">🔥 Seri: ${state.streak}</span>
-                        </div>
-
-                        <!-- Question Text -->
-                        <h3 class="font-display font-extrabold text-base sm:text-lg text-white leading-snug">
-                            ${step.question}
-                        </h3>
-
-                        <!-- Options List -->
-                        <div id="optionsContainer" class="space-y-2.5">
-                            ${step.options.map((opt, idx) => `
-                                <button id="optBtn_${idx}" onclick="selectQuizOption(${idx})" class="w-full text-left p-3.5 rounded-2xl bg-slate-900/90 hover:bg-slate-800 border-2 border-slate-700/80 transition flex items-center gap-3 active:scale-[0.99]">
-                                    <span id="optBadge_${idx}" class="w-8 h-8 rounded-xl bg-slate-800 border border-slate-600 font-display font-black text-xs text-cyan-400 flex items-center justify-center shrink-0">
-                                        ${letters[idx]}
-                                    </span>
-                                    <span class="text-xs sm:text-sm font-semibold text-slate-100 leading-snug flex-1">
-                                        ${opt}
-                                    </span>
-                                </button>
-                            `).join('')}
-                        </div>
-
-                        <!-- Explanation Box (Hidden until answered) -->
-                        <div id="quizFeedbackBox" class="hidden p-3.5 rounded-2xl border text-xs sm:text-sm leading-relaxed animate-pop"></div>
-                    </div>
-                </div>
-            `;
-        }
-
-        function selectQuizOption(selectedIndex) {
-            if (state.questionAnswered) return;
-            state.questionAnswered = true;
-
-            const mod = getCurrentModule();
-            const step = mod.steps[state.currentStepIndex];
-            const isCorrect = selectedIndex === step.correct;
-
-            state.moduleQuestionCount++;
-            const feedbackBox = document.getElementById('quizFeedbackBox');
-
-            // Style all option buttons
-            step.options.forEach((_, idx) => {
-                const btn = document.getElementById(`optBtn_${idx}`);
-                const badge = document.getElementById(`optBadge_${idx}`);
-                btn.disabled = true;
-
-                if (idx === step.correct) {
-                    btn.className = 'w-full text-left p-3.5 rounded-2xl bg-emerald-500/20 border-2 border-emerald-400 flex items-center gap-3 shadow-lg';
-                    badge.className = 'w-8 h-8 rounded-xl bg-emerald-400 text-slate-950 font-display font-black text-xs flex items-center justify-center shrink-0';
-                    badge.innerHTML = '<i class="fa-solid fa-check"></i>';
-                } else if (idx === selectedIndex && !isCorrect) {
-                    btn.className = 'w-full text-left p-3.5 rounded-2xl bg-rose-500/20 border-2 border-rose-500 flex items-center gap-3 animate-shake';
-                    badge.className = 'w-8 h-8 rounded-xl bg-rose-500 text-white font-display font-black text-xs flex items-center justify-center shrink-0';
-                    badge.innerHTML = '<i class="fa-solid fa-xmark"></i>';
-                } else {
-                    btn.className = 'w-full text-left p-3.5 rounded-2xl bg-slate-900/40 border border-slate-800 opacity-50 flex items-center gap-3';
-                }
-            });
-
-            if (isCorrect) {
-                playSound('correct');
-                fireConfetti(30);
-                state.streak++;
-                if (state.streak > state.bestStreak) state.bestStreak = state.streak;
-                state.moduleCorrectCount++;
-
-                const bonus = Math.min(50, (state.streak - 1) * 10);
-                addPoints(100 + bonus);
-
-                feedbackBox.className = 'p-3.5 rounded-2xl bg-emerald-500/15 border border-emerald-500/50 text-emerald-100 text-xs sm:text-sm leading-relaxed animate-pop';
-                feedbackBox.innerHTML = `
-                    <div class="font-display font-black text-emerald-300 text-sm mb-1">
-                        🎉 HARİKASIN KANKA! DOĞRU CEVAP! (+${100 + bonus} Puan)
-                    </div>
-                    <div>${step.explanation}</div>
-                `;
+        function toggleLearned(id) {
+            if (!learnedSet.has(id)) {
+                learnedSet.add(id);
+                addXP(20, `Soru ${id} Tamamlandı! +20 XP 🚀`);
             } else {
-                playSound('wrong');
-                state.streak = 0;
-                updateHUD();
-
-                feedbackBox.className = 'p-3.5 rounded-2xl bg-rose-500/15 border border-rose-500/50 text-rose-100 text-xs sm:text-sm leading-relaxed animate-pop';
-                feedbackBox.innerHTML = `
-                    <div class="font-display font-black text-rose-300 text-sm mb-1">
-                        💡 OLSUN KANKA, ŞİMDİ ÖĞRENDİN!
-                    </div>
-                    <div>${step.explanation}</div>
-                `;
+                learnedSet.delete(id);
             }
+            updateProgress();
+            renderStudyList();
+        }
 
-            const isLastStep = state.currentStepIndex === mod.steps.length - 1;
-            setMainActionButton(
-                isLastStep ? 'Üniteyi Tamamla & Karneyi Gör 🏆' : 'Tamam, Devam Et! 🚀',
-                true,
-                'from-emerald-500 via-teal-500 to-cyan-600'
-            );
+        function updateProgress() {
+            const count = learnedSet.size;
+            document.getElementById('progress-text').innerText = `${count} / 10 Konu Tamam`;
+            document.getElementById('progress-fill').style.width = `${(count / 10) * 100}%`;
+        }
 
-            // Auto scroll down slightly so explanation is visible on small screens
+        // 2. FLASHCARD SİSTEMİ
+        function renderFlashcard() {
+            const item = studyData[currentCard];
+            const cardEl = document.getElementById('flashcard');
+            cardEl.classList.remove('flipped');
             setTimeout(() => {
-                const viewport = document.getElementById('mainViewport');
-                viewport.scrollTo({ top: viewport.scrollHeight, behavior: 'smooth' });
-            }, 120);
+                document.getElementById('fc-counter').innerText = `Kart ${currentCard + 1} / ${studyData.length}`;
+                document.getElementById('fc-badge').innerText = `SORU ${item.id}`;
+                document.getElementById('fc-question').innerText = item.title;
+                document.getElementById('fc-answer').innerHTML = item.answer + `<div class="key-tip" style="margin-top:10px;">💡 ${item.tip}</div>`;
+            }, 150);
         }
 
-        function handleMainAction() {
-            if (!state.questionAnswered) return;
-            playSound('click');
+        function flipCard() {
+            document.getElementById('flashcard').classList.toggle('flipped');
+        }
 
-            const mod = getCurrentModule();
-            if (!mod) return;
+        function nextCard() {
+            currentCard = (currentCard + 1) % studyData.length;
+            renderFlashcard();
+        }
 
-            if (state.currentStepIndex < mod.steps.length - 1) {
-                state.currentStepIndex++;
-                renderCurrentStep();
+        function prevCard() {
+            currentCard = (currentCard - 1 + studyData.length) % studyData.length;
+            renderFlashcard();
+        }
+
+        // 3. QUIZ SİSTEMİ
+        function renderQuizQuestion() {
+            const box = document.getElementById('quiz-box');
+            if (currentQuiz >= quizQuestions.length) {
+                document.getElementById('quiz-progress').innerText = "TAMAMLANDI 🏆";
+                box.innerHTML = `
+                    <div style="text-align:center; padding:16px 0;">
+                        <h2 style="font-size:1.5rem; margin-bottom:10px;">🎉 Testi Bitirdin!</h2>
+                        <p style="color:#94a3b8; margin-bottom:18px;">Toplam Puanın: <b style="color:#fbbf24;">${xp} XP</b> | En Yüksek Seri: <b style="color:#f87171;">${streak} 🔥</b></p>
+                        <button class="learn-btn" onclick="restartQuiz()">🔄 Tekrar Oyna</button>
+                    </div>`;
+                return;
+            }
+
+            const qObj = quizQuestions[currentQuiz];
+            document.getElementById('quiz-progress').innerText = `SORU ${currentQuiz + 1} / ${quizQuestions.length}`;
+            document.getElementById('quiz-q').innerText = qObj.q;
+
+            const optsDiv = document.getElementById('quiz-options');
+            optsDiv.innerHTML = qObj.options.map((opt, idx) => `
+                <button class="option-btn" onclick="selectQuizOption(${idx}, this)">
+                    <span style="background:rgba(255,255,255,0.1); width:26px; height:26px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; font-size:0.8rem;">${['A','B','C','D'][idx]}</span>
+                    <span>${opt}</span>
+                </button>
+            `).join('');
+
+            const fb = document.getElementById('quiz-feedback');
+            fb.style.display = 'none';
+        }
+
+        function selectQuizOption(idx, btnEl) {
+            const qObj = quizQuestions[currentQuiz];
+            const buttons = document.querySelectorAll('#quiz-options .option-btn');
+            buttons.forEach(b => b.disabled = true);
+
+            const fb = document.getElementById('quiz-feedback');
+            fb.style.display = 'block';
+
+            if (idx === qObj.ans) {
+                btnEl.classList.add('correct');
+                streak++;
+                document.getElementById('streak-count').innerText = streak;
+                addXP(25, `Doğru! +25 XP (Seri: ${streak}🔥)`);
+                fb.style.background = 'rgba(16, 185, 129, 0.15)';
+                fb.style.color = '#6ee7b7';
+                fb.innerHTML = `✅ <b>Harika!</b> ${qObj.exp} <br><br><button class="sim-check-btn" onclick="nextQuiz()">Sonraki Soru ➡️</button>`;
             } else {
-                finishModule(mod);
+                btnEl.classList.add('wrong');
+                buttons[qObj.ans].classList.add('correct');
+                streak = 0;
+                document.getElementById('streak-count').innerText = streak;
+                fb.style.background = 'rgba(239, 68, 68, 0.15)';
+                fb.style.color = '#fca5a5';
+                fb.innerHTML = `❌ <b>Dikkat!</b> ${qObj.exp} <br><br><button class="sim-check-btn" onclick="nextQuiz()">Sonraki Soru ➡️</button>`;
             }
         }
 
-        function prevStep() {
-            playSound('click');
-            if (state.currentStepIndex > 0) {
-                state.currentStepIndex--;
-                renderCurrentStep();
-            }
+        function nextQuiz() {
+            currentQuiz++;
+            renderQuizQuestion();
         }
 
-        /**************************************************************
-         * 9. ÜNİTE / SINAV SONU KARNE EKRANI
-         **************************************************************/
-        function finishModule(mod) {
-            playSound('victory');
-            fireConfetti(75);
-            state.completedModules[mod.id] = true;
-            saveState();
+        function restartQuiz() {
+            currentQuiz = 0;
+            document.getElementById('quiz-box').innerHTML = `
+                <div class="question-text" id="quiz-q"></div>
+                <div id="quiz-options"></div>
+                <div class="feedback-banner" id="quiz-feedback"></div>
+            `;
+            renderQuizQuestion();
+        }
 
-            document.getElementById('bottomActionBar').classList.add('hidden');
-            document.getElementById('moduleProgressWrapper').classList.add('hidden');
+        // 4. 10'DAN 5'İ ÇIKACAK (SINAV SİMÜLATÖRÜ)
+        function generateExam() {
+            const shuffled = [...studyData].sort(() => 0.5 - Math.random());
+            const selected = shuffled.slice(0, 5);
+            const container = document.getElementById('sim-questions');
 
-            const totalQ = state.moduleQuestionCount || 1;
-            const correctQ = state.moduleCorrectCount;
-            const examGrade = Math.round((correctQ / totalQ) * 100);
-
-            let comment = 'Efsanesin kanka! Yazılıdan 100 almaya hazırsın! 🔥';
-            if (examGrade < 60) {
-                comment = 'İyi deneme kanka! Yanlış yaptığın soruların açıklamalarına bir kez daha bakarsan 100 garanti! 💪';
-            } else if (examGrade < 85) {
-                comment = 'Çok iyi gidiyorsun kanka! Ufak tuzaklara dikkat edersen yazılıdan 100 alırsın! 🚀';
-            }
-
-            const viewport = document.getElementById('mainViewport');
-            viewport.innerHTML = `
-                <div class="animate-pop space-y-4 py-3 text-center">
-                    <div class="glass-card rounded-3xl p-6 border border-amber-400/50 shadow-2xl space-y-4">
-                        <div class="text-5xl animate-bounce">🏆</div>
-                        <div class="space-y-1">
-                            <span class="px-3 py-1 rounded-full text-xs font-extrabold bg-emerald-500/20 text-emerald-300 border border-emerald-500/40">
-                                BÖLÜM TAMAMLANDI!
-                            </span>
-                            <h2 class="font-display font-black text-2xl text-white mt-2">${mod.title}</h2>
-                        </div>
-
-                        <!-- Score Circle -->
-                        <div class="w-32 h-32 mx-auto rounded-full bg-gradient-to-br from-amber-400 via-orange-500 to-purple-600 p-1 shadow-xl">
-                            <div class="w-full h-full rounded-full bg-slate-950 flex flex-col items-center justify-center">
-                                <span class="text-[11px] font-bold text-slate-400">YAZILI NOTUN</span>
-                                <span class="font-display font-black text-4xl text-amber-300">${examGrade}</span>
-                                <span class="text-[11px] font-bold text-emerald-400">${correctQ} / ${totalQ} Doğru</span>
-                            </div>
-                        </div>
-
-                        <p class="text-xs sm:text-sm text-slate-200 leading-relaxed px-2">
-                            ${comment}
-                        </p>
-
-                        <div class="grid grid-cols-2 gap-2.5 pt-2">
-                            <button onclick="startModule('${mod.id}')" class="py-3 px-4 rounded-2xl bg-slate-800 hover:bg-slate-700 border border-slate-600 font-display font-bold text-xs sm:text-sm text-cyan-300 btn-3d">
-                                🔄 Tekrar Çöz
-                            </button>
-                            <button onclick="goHome()" class="py-3 px-4 rounded-2xl bg-gradient-to-r from-cyan-500 to-purple-600 font-display font-extrabold text-xs sm:text-sm text-white btn-3d">
-                                🏠 Diğer Üniteye Geç
-                            </button>
-                        </div>
+            container.innerHTML = selected.map((item, index) => `
+                <div class="sim-paper">
+                    <span class="q-badge">SINAV SORUSU ${index + 1} (20 Puan)</span>
+                    <div class="topic-title" style="font-size:1rem;">${item.title}</div>
+                    <textarea class="sim-textarea" id="sim-input-${item.id}" placeholder="Sınavda nasıl yazacaksan buraya kısaca yaz, anahtar kelimeleri yakalayalım..."></textarea>
+                    <div style="display:flex; gap:8px; flex-wrap:wrap;">
+                        <button class="sim-check-btn" onclick="checkSimAnswer(${item.id})">✅ Cevabımı Kontrol Et</button>
+                        <button class="sim-check-btn" style="background:#334155;" onclick="toggleSimSolution(${item.id})">👀 Tam Cevabı Gör</button>
+                    </div>
+                    <div class="keyword-tags" id="kw-box-${item.id}">
+                        ${item.keywords.map(kw => `<span class="kw-tag" data-kw="${kw}">🔑 ${kw}</span>`).join('')}
+                    </div>
+                    <div class="answer-box" id="sim-sol-${item.id}" style="display:none; margin-top:12px;">
+                        ${item.answer}
                     </div>
                 </div>
-            `;
+            `).join('');
         }
 
-        /**************************************************************
-         * 10. HIZLI ŞİFRELER MODAL & TEK TIKLA HTML İNDİRME
-         **************************************************************/
-        function openCheatSheet() {
-            playSound('click');
-            const modal = document.getElementById('cheatSheetModal');
-            modal.classList.remove('hidden');
-            modal.classList.add('flex');
+        function checkSimAnswer(id) {
+            const item = studyData.find(x => x.id === id);
+            const val = document.getElementById(`sim-input-${id}`).value.toLocaleLowerCase('tr-TR');
+            const tags = document.querySelectorAll(`#kw-box-${id} .kw-tag`);
+            let matchedCount = 0;
+
+            tags.forEach(tag => {
+                const kw = tag.getAttribute('data-kw').toLocaleLowerCase('tr-TR');
+                if (val.includes(kw)) {
+                    tag.classList.add('matched');
+                    matchedCount++;
+                } else {
+                    tag.classList.remove('matched');
+                }
+            });
+
+            if (matchedCount >= 2) {
+                addXP(30, `Süper! ${matchedCount} Anahtar Kelime Yakaladın (+30 XP) 🎯`);
+            } else {
+                const toast = document.getElementById('toast');
+                toast.innerText = `💡 En az 2-3 anahtar kelime kullanmaya çalış!`;
+                toast.classList.add('show');
+                setTimeout(() => toast.classList.remove('show'), 2000);
+            }
         }
 
-        function closeCheatSheet() {
-            playSound('click');
-            const modal = document.getElementById('cheatSheetModal');
-            modal.classList.add('hidden');
-            modal.classList.remove('flex');
+        function toggleSimSolution(id) {
+            const sol = document.getElementById(`sim-sol-${id}`);
+            sol.style.display = sol.style.display === 'none' ? 'block' : 'none';
         }
-
-        function downloadThisApp() {
-            playSound('victory');
-            const htmlContent = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
-            const blob = new Blob([htmlContent], { type: 'text/html;charset=utf-8' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = '8_Sinif_Fen_1_Yazili_Kampi.html';
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            URL.revokeObjectURL(url);
-        }
-
-        // Başlangıçta Ana Ekranı ve HUD'ı Yükle
-        window.onload = function () {
-            updateHUD();
-            renderHomeScreen();
-        };
     </script>
 </body>
 </html>
